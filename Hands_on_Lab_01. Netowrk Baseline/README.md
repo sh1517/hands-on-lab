@@ -48,12 +48,14 @@
 ### 3. Subnet 생성 정보 입력
 - 아래 서브넷 자원 명세서를 참고하여 정보 입력
 - 화면 하단의 '서브넷 추가' 버튼 이용 여러 개의 서브넷 정보 동시 입력 가능 
+
 |  |Public Subnet 01|Public Subnet 02|Private Subnet 01|Private Subnet 02|
 |:---:|:---:|:---:|:---:|:---:|
 |VPC_ID|leb-edu-vpc-ap-01|leb-edu-vpc-ap-01|leb-edu-vpc-ap-01|leb-edu-vpc-ap-01|
 |Subnet_Name|lab-edu-sub-pub-01|lab-edu-sub-pub-02|lab-edu-sub-pri-01|lab-edu-sub-pri-02|
 |Availability_Zone|ap-northeast-2a|ap-northeast-2c|ap-northeast-2a|ap-northeast-2c|
 |IPv4 CIDR|10.0.0.0/24|10.0.1.0/24|10.0.40.0/24|10.0.41.0/24|
+
 <img src="./img/subnet_03.png" width="600" />
 
 ### 4. Public Subnet 추가 설정
