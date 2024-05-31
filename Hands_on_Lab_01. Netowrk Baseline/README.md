@@ -89,6 +89,7 @@
 ## Routing Table 설정
 ### 1. Public & Private Routing Table 생성
 - 아래 라우팅 테이블 명세서를 참고하여 정보 입력
+
 |    |Public Routing Table|Private Routing Table 01|Private Routing Table 02|
 |:---:|:---:|:---:|:---:|
 |Name|lab-edu-rtb-pub|lab-edu-rtb-pri-01|lab-edu-rtb-pri-02|
