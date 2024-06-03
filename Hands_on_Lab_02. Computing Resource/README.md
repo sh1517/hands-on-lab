@@ -57,7 +57,6 @@
         ![alt text](./img/connection_04.png)
 
 - EC2 접속 정보 확인: 인스턴스 메인 콘솔 화면 이동 → '인스턴스' 탭으로 이동 → 'lab-edu-ec2-bastion' 선택 → 퍼블릭 IPv4 주소 복사
-
     ![alt text](./img/connection_05.png)
 
 - PuTTY 실행 및 접속
@@ -69,8 +68,24 @@
 
         ![alt text](./img/connection_07.png)
 
+### 5. Web Service 구성
+- "Hands_on_Lab_02. Computing Resource/install_python.sh" 파일 내용 복사
 
+    ![alt text](./img/web_server_01.png)
 
+- Bastion 서버 접속 → VIM Editor 이용 내용 입력
+
+    <img src="./img/web_server_02.png" width="800">
+
+- 스크립트 실행 
+    ```bash
+    chmod +x install_python.sh
+    ./install_python.sh
+    ```
+
+- 웹 서비스 접속 테스트 (Bastion 서버 Public IP로 브라우저에서 접속)
+
+    ![alt text](./img/web_server_03.png)
 
 # Creating Web Server
 ### 1. EC2 메인 콘솔 화면으로 이동
@@ -107,7 +122,7 @@
 
         ![alt text](./img/web_02.png)
 
-    - Bastion 서버에서 에디터 이용 파일로 내용 저장 (파일명: *lab-edu-key-ec2.pem*)
+    - Bastion 서버에서 VIM Editor 이용 파일로 내용 저장 (파일명: *lab-edu-key-ec2.pem*)
 
         ![alt text](./img/web_03.png)
 
