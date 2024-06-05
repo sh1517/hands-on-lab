@@ -12,7 +12,7 @@
     - **인스턴스 유형:** *t3.micro*
     - **키 페어:** '새 키 페어 생성' 버튼 클릭 → 키 페어 이름: *lab-edu-key-ec2* → '키 페어 생성' 버튼 클릭
 
-    ![alt text](./img/instance_02.png)
+        ![alt text](./img/instance_02.png)
 
     - **네트워크 설정:**
         - '편집' 버튼 클릭
@@ -29,7 +29,7 @@
             - 유형: http
             - 소스 유형: 내 IP
 
-    ![alt text](./img/instance_03.png)
+                ![alt text](./img/instance_03.png)
 
 - '인스턴스 시작' 버튼 클릭
 
@@ -87,6 +87,8 @@
 
     ![alt text](./img/web_server_03.png)
 
+<br>
+
 # Creating Web Server
 ### 1. EC2 메인 콘솔 화면으로 이동
 - **인스턴스 리소스 탭 → '인스턴스 시작' 버튼 클릭**
@@ -111,6 +113,9 @@
         - 보안 그룹 규칙2
             - 유형: http
             - 소스 유형: 10.0.0.0/16
+        - 고급 세부 정보 확장
+            - 사용자 데이터: "Hands_on_Lab_02. Computing Resource/install_python.sh" 파일 내용 복사
+                ![alt text](./img/web_server_04.png)
 
 ### 3. Web 서버 접속
 - Bastion 서버 접속
@@ -139,5 +144,36 @@
         ssh -i lab-edu-key-ec2.pem ec2-user@*{WEB_SERVER_PRIVATE_IP}*
         ```
         ![alt text](./img/web_04.png)
+    
+    - init script 실행 결과 확인
+        ```bash
+        ps -ef | grep streamlit
+        ```
+<br>
 
 # Creating Cloud9 Server
+### 1. cloud9 메인 콘솔 화면으로 이동
+- **'환경 생성' 버튼 클릭**
+
+    ![alt text](./img/cloud9_01.png)
+
+### 2. cloud9 설정 정보 입력 및 생성
+- 아래 cloud9 자원 명세서를 참고하여 정보 입력
+    - **이름:** *lab-edu-cloud9-workspace*
+    - **인스턴스 유형:** *t2.micro*
+    - **플랫폼:** *Amazon Linux 2023*
+    - **시간 제한:** *1시간*
+    - **네트워크 설정:**
+        - 'VPC 설정' 버튼 클릭
+        - VPC: *lab-edu-vpc-ap-01*
+        - 서브넷: *lab-edu-sub-pub-02*
+            ![alt text](./img/cloud9_02.png)
+
+### 3. cloud9 서버 접속
+- '열림' 버튼 클릭
+
+    ![alt text](./img/cloud9_03.png)
+
+- 'Welcome' 페이지 종료 → 'Command Terminal' 화면 상단으로 Drag & Drop
+
+    ![alt text](./img/cloud9_04.png)
