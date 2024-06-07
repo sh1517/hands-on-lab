@@ -18,22 +18,22 @@
     |   |   |                                     |lab-edu-sub-db-02|10.10.81.0/24|lab-edu-rtb-db|
     |   |   |                                     |lab-edu-sub-tgw-01|10.10.255.224/24|lab-edu-rtb-tgw|
     |   |   |                                     |lab-edu-sub-tgw-02|10.10.255.240/24|lab-edu-rtb-tgw|
-    |us-east-1|lab-edu-vpc-us-01|10.20.0.0/16     |lab-edu-sub-pub-01|10.10.0.0/24 |lab-edu-rtb-pub |
-    |   |   |                                     |lab-edu-sub-pub-02|10.10.1.0/24 |lab-edu-rtb-pub |
-    |   |   |                                     |lab-edu-sub-pri-01|10.10.40.0/24|lab-edu-rtb-pri |
-    |   |   |                                     |lab-edu-sub-pri-02|10.10.41.0/24|lab-edu-rtb-pri |
-    |   |   |                                     |lab-edu-sub-db-01|10.10.80.0/24|lab-edu-rtb-db|
-    |   |   |                                     |lab-edu-sub-db-02|10.10.81.0/24|lab-edu-rtb-db|
-    |   |   |                                     |lab-edu-sub-tgw-01|10.10.255.224/24|lab-edu-rtb-tgw|
-    |   |   |                                     |lab-edu-sub-tgw-02|10.10.255.240/24|lab-edu-rtb-tgw|
-    |eu-central-1|lab-edu-vpc-eu-01|10.30.0.0/16  |lab-edu-sub-pub-01|10.10.0.0/24 |lab-edu-rtb-pub |
-    |   |   |                                     |lab-edu-sub-pub-02|10.10.1.0/24 |lab-edu-rtb-pub |
-    |   |   |                                     |lab-edu-sub-pri-01|10.10.40.0/24|lab-edu-rtb-pri |
-    |   |   |                                     |lab-edu-sub-pri-02|10.10.41.0/24|lab-edu-rtb-pri |
-    |   |   |                                     |lab-edu-sub-db-01|10.10.80.0/24|lab-edu-rtb-db|
-    |   |   |                                     |lab-edu-sub-db-02|10.10.81.0/24|lab-edu-rtb-db|
-    |   |   |                                     |lab-edu-sub-tgw-01|10.10.255.224/24|lab-edu-rtb-tgw|
-    |   |   |                                     |lab-edu-sub-tgw-02|10.10.255.240/24|lab-edu-rtb-tgw|
+    |us-east-1|lab-edu-vpc-us-01|10.20.0.0/16     |lab-edu-sub-pub-01|10.20.0.0/24 |lab-edu-rtb-pub |
+    |   |   |                                     |lab-edu-sub-pub-02|10.20.1.0/24 |lab-edu-rtb-pub |
+    |   |   |                                     |lab-edu-sub-pri-01|10.20.40.0/24|lab-edu-rtb-pri |
+    |   |   |                                     |lab-edu-sub-pri-02|10.20.41.0/24|lab-edu-rtb-pri |
+    |   |   |                                     |lab-edu-sub-db-01|10.20.80.0/24|lab-edu-rtb-db|
+    |   |   |                                     |lab-edu-sub-db-02|10.20.81.0/24|lab-edu-rtb-db|
+    |   |   |                                     |lab-edu-sub-tgw-01|10.20.255.224/24|lab-edu-rtb-tgw|
+    |   |   |                                     |lab-edu-sub-tgw-02|10.20.255.240/24|lab-edu-rtb-tgw|
+    |eu-central-1|lab-edu-vpc-eu-01|10.30.0.0/16  |lab-edu-sub-pub-01|10.30.0.0/24 |lab-edu-rtb-pub |
+    |   |   |                                     |lab-edu-sub-pub-02|10.30.1.0/24 |lab-edu-rtb-pub |
+    |   |   |                                     |lab-edu-sub-pri-01|10.30.40.0/24|lab-edu-rtb-pri |
+    |   |   |                                     |lab-edu-sub-pri-02|10.30.41.0/24|lab-edu-rtb-pri |
+    |   |   |                                     |lab-edu-sub-db-01|10.30.80.0/24|lab-edu-rtb-db|
+    |   |   |                                     |lab-edu-sub-db-02|10.30.81.0/24|lab-edu-rtb-db|
+    |   |   |                                     |lab-edu-sub-tgw-01|10.30.255.224/24|lab-edu-rtb-tgw|
+    |   |   |                                     |lab-edu-sub-tgw-02|10.30.255.240/24|lab-edu-rtb-tgw|
 
 
 - **보안그룹 자원 명세서**
