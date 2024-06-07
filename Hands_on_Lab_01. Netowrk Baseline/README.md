@@ -1,5 +1,5 @@
 # Creating Network Baseline
-**자원 명세서:** 서울 리전 네트워크 리소스 생성 정보
+**네트워크 자원 명세서:** 서울 리전 네트워크 리소스 생성 정보
 |Region|VPC_Name|CIDR|Subnet_Name|CIDR|Routing_Table_Name|
 |:---:|:---:|:---:|:---:|:---:|:---:|
 |ap-northeast-2|lab-edu-vpc-ap-01|10.0.0.0/16 |lab-edu-sub-pub-01|10.0.0.0/24 |lab-edu-rtb-pub    |
@@ -7,7 +7,7 @@
 |   |   |                                     |lab-edu-sub-pri-01|10.0.40.0/24|lab-edu-rtb-pri-01 |
 |   |   |                                     |lab-edu-sub-pri-02|10.0.41.0/24|lab-edu-rtb-pri-02 |
 
-**라우팅 테이블 경로 설정**
+**라우팅 테이블 경로 명세서**
 |Table_Name|Destination|Target|
 |:---:|:---:|:---:|
 |lab-edu-rtb-pub      |10.0.0.0/16   |Local|

@@ -57,6 +57,7 @@
         ![alt text](./img/connection_04.png)
 
 - EC2 접속 정보 확인: 인스턴스 메인 콘솔 화면 이동 → '인스턴스' 탭으로 이동 → 'lab-edu-ec2-bastion' 선택 → 퍼블릭 IPv4 주소 복사
+
     ![alt text](./img/connection_05.png)
 
 - PuTTY 실행 및 접속
@@ -115,6 +116,7 @@
             - 소스 유형: 10.0.0.0/16
         - 고급 세부 정보 확장
             - 사용자 데이터: "Hands_on_Lab_02. Computing Resource/install_python.sh" 파일 내용 복사
+            
                 ![alt text](./img/web_server_04.png)
 
 ### 3. Web 서버 접속
