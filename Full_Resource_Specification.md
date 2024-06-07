@@ -37,11 +37,13 @@
 
 - **EC2 자원 명세서**
 
-    |Region|        VPC_Name|         EC2_Name|                 Subet|              Public_IP|  Private_IP|Key-Pair|
-    |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-    |ap-northeast-2 |lab-edu-vpc-ap-01|lab-edu-ec2-bastion      |lab-edu-sub-pub-01|O|          10.0.0.x|  lab-edu-key-ec2|
-    |               |                 |lab-edu-cloud9-workspace |lab-edu-sub-pub-02|O|          10.0.1.x|  -|
-    |               |                 |lab-edu-ec2-web          |lab-edu-sub-pri-01|X|          10.0.40.x| lab-edu-key-ec2|
+    **Region :** ap-northeast-2 / **VPC :** lab-edu-vpc-ap-01 
+
+    |EC2_Name|                 Elastic_IP| Public_IP| Private_IP|OS|                Key-Pair|
+    |:---:|:---:|:---:|:---:|:---:|:---:|
+    |lab-edu-ec2-bastion      |X|         O|          10.0.0.x|  Amazon Linux 2023| lab-edu-key-ec2|
+    |lab-edu-cloud9-workspace |X|         O|          10.0.1.x|  Amazon Linux 2|    -|
+    |lab-edu-ec2-web          |X|         X|          10.0.40.x| Amazon Linux 2023| lab-edu-key-ec2|
 
 - **보안그룹 자원 명세서**
 
