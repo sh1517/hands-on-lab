@@ -35,10 +35,17 @@
     |   |   |                                     |lab-edu-sub-tgw-01|10.30.255.224/24|lab-edu-rtb-tgw|
     |   |   |                                     |lab-edu-sub-tgw-02|10.30.255.240/24|lab-edu-rtb-tgw|
 
+- **EC2 자원 명세서**
+
+    |Region|        VPC_Name|         EC2_Name|                 Subet|              Public_IP|  Private_IP|Key-Pair|
+    |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+    |ap-northeast-2 |lab-edu-vpc-ap-01|lab-edu-ec2-bastion      |lab-edu-sub-pub-01|O|          10.0.0.x|  lab-edu-key-ec2|
+    |               |                 |lab-edu-cloud9-workspace |lab-edu-sub-pub-02|O|          10.0.1.x|  -|
+    |               |                 |lab-edu-ec2-web          |lab-edu-sub-pri-01|X|          10.0.40.x| lab-edu-key-ec2|
 
 - **보안그룹 자원 명세서**
 
-    |Region|        VPC_Name|         Name|          Rule|        port|Protocol|Source|
+    |Region|        VPC_Name|         SG_Name|          Rule|        port|Protocol|Source|
     |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
     |ap-northeast-2|lab-edu-vpc-ap-01|lab-edu-sg-bastion|In-bound|22|   SSH|    MY_PUBLIC_IP|
     |   |   |                                           |In-bound|80|   HTTP|   MY_PUBLIC_IP|
@@ -46,3 +53,5 @@
     |   |   |                                           |In-bound|80|   HTTP|   10.0.0.0/16|
     |ap-northeast-2|lab-edu-vpc-ap-01|lab-edu-sg-alb    |In-bound|80|   HTTP|   0.0.0.0/0|
     |   |   |                                           |In-bound|443|  HTTPS|  0.0.0.0/0|
+
+
