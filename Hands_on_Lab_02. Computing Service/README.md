@@ -77,6 +77,7 @@
     ![alt text](./img/connection_05.png)
 
 - PuTTY 실행 및 접속
+
     - Putty 실행 → SSH 클릭 → Auth 클릭 → Credentilas 클릭 → Browser 클릭 → 'lab-edu-key-ec2.ppk' 선택
 
         ![alt text](./img/connection_06.png)
