@@ -94,8 +94,56 @@
 
     ![alt text](./img/access_secret_02.png)
 
-- 'Command Line Interface (CLI)' 라디오 박스 선택 → '위의 권장 사항을 이해했으며 액세스 키 생성을 계속하려고 합니다' 체크박스 활성화 → '다음' 버튼 클릭 → '액세스 키 만들기' 클릭 
+- 'Command Line Interface (CLI)' 라디오 박스 선택 → '위의 권장 사항을 이해했으며 액세스 키 생성을 계속하려고 합니다' 체크박스 활성화
+
+- '다음' 버튼 클릭 → '액세스 키 만들기' 클릭 
 
     ![alt text](./img/access_secret_03.png)
 
-- 
+- '표시' 버튼 클릭 → Access key & Secret key 메모장에 저장 ***(※ 해당 페이지 이탈 후 다시 확인이 불가능하기 때문에 별도 저장 필요)***
+
+    ![alt text](./img/access_secret_04.png)
+
+### 3. Access key & Secret key 활용
+
+- Bastion 서버 접속
+
+    - Putty 실행 → SSH 클릭 → Auth 클릭 → Credentilas 클릭 → Browser 클릭 → 'lab-edu-key-ec2.ppk' 선택 
+
+    - Session 클릭 → Host Name: 'ec2-user@*{BASTION_SERVER_PUBLIC_IP}* 입력 → 'Open' 버튼 클릭
+
+- EC2 Bastion 서버에 Access & Secret key 설정
+
+    ```bash
+    $ aws configure
+    AWS Access Key ID [None]: AKI**************GQD
+    AWS Secret Access Key [None]: cLu************************************vlo
+    Default region name [None]: ap-northeast-2
+    Default output format [None]: json
+    ```
+
+- Access & Secret Key 적용 여부 확인
+
+    ```bash
+    $ aws sts get-caller-identity
+    {
+        "UserId": "AIDA6GBMEOUMBPJ5ZUVFO",
+        "Account": "97********00",
+        "Arn": "arn:aws:iam::97********00:user/lab-edu-iam-user-01"
+    }
+    ```
+
+- Access & Secret Key에 할당된 권한 테스트
+
+    - streamlit 서비스 실행
+
+        ```bash
+        sudo su -
+        cd streamlit-project/
+        streamlit run main.py --server.port 80
+        ```
+
+    - 브라우저에서 웹 서비스 접속 후 EC2 정보가 화면에 표시 되는지 확인
+
+        ![alt text](./img/acces_key_test_01.png)
+        ***※ streamlit 처음 설치 후 확인 한 서비스 화면에서 Error가 발생 한 이유는 서버 정보에 접근 할 권한이 없었기 때문이다.***
