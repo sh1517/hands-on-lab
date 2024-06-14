@@ -128,6 +128,9 @@
 
     ```bash
     $ aws sts get-caller-identity
+    ```
+    
+    ```bash
     {
         "UserId": "AIDA6GBMEOUMBPJ5ZUVFO",
         "Account": "97********00",
@@ -141,7 +144,13 @@
 
         ```bash
         sudo su -
+        ```
+
+        ```bash
         cd streamlit-project/
+        ```
+        
+        ```bash
         streamlit run main.py --server.port 80
         ```
 
@@ -206,22 +215,31 @@
 
 - Web Service 실행 여부 확인 및 실행 명령어 입력
 
-    ```bash
-    # streamlit의 80번 포트 LISTEN 상태 여부 체크
-    netstat -ntlp
-    Active Internet connections (only servers)
-    Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name
-    tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      1500/sshd: /usr/sbi
-    tcp6       0      0 :::22                   :::*                    LISTEN      1500/sshd: /usr/sbi
+    - streamlit의 80번 포트 LISTEN 상태 여부 체크
+
+        ```bash
+        netstat -ntlp
+        Active Internet connections (only servers)
+        Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name
+        tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      1500/sshd: /usr/sbi
+        tcp6       0      0 :::22                   :::*                    LISTEN      1500/sshd: /usr/sbi
+        ```
     
-    # 80번 포트 없는 경우 다음 명령어 실행
-    sudo su -
-    cd streamlit-project/
-    streamlit run main.py --server.port 80
-    ```
+    - 80번 포트 LISTENING 상태가 아닌 경우 다음 명령어 실행
+
+        ```bash
+        sudo su -
+        ```
+
+        ```bash
+        cd streamlit-project/
+        ```
+
+        ```bash
+        streamlit run main.py --server.port 80
+        ```
 
 - 웹 서비스 접속 테스트 (로드밸런서 DNS 정보로 브라우저에서 접속)
 
     ![alt text](./img/iam_role_05.png)
 
-    
