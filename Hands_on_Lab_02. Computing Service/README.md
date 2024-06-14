@@ -114,6 +114,7 @@
 - 웹 서비스 접속 테스트 (Bastion 서버 Public IP로 브라우저에서 접속)
 
     ![alt text](./img/web_server_03.png)
+    ***※ Bastion Server에는 EC2 관련 데이터 접근을 위한 IAM 권한이 없어 에러 페이지 반환***
 
 <br>
 
