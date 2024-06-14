@@ -74,6 +74,8 @@
 
 <br><br>
 
+
+
 # Creating Access key & Secret key
 
 ### 1. IAM User AdministratorAccess 권한 할당
@@ -146,4 +148,80 @@
     - 브라우저에서 웹 서비스 접속 후 EC2 정보가 화면에 표시 되는지 확인
 
         ![alt text](./img/acces_key_test_01.png)
-        ***※ streamlit 처음 설치 후 확인 한 서비스 화면에서 Error가 발생 한 이유는 서버 정보에 접근 할 권한이 없었기 때문이다.***
+        ***※ EC2 Information 정보는 EC2 관련 IAM 권한이 없으면 접근 제한***
+
+<br>
+
+# Creating IAM Role
+
+### 1. IAM Role 생성
+
+- **IAM 메인 콘솔 화면 → 역할 리소스 탭 → "역 생성" 버튼 클릭**
+
+- 아래 정보 참고하여 설정
+
+    - 신뢰할 수 있는 엔터티 유형: 'AWS 서비스' 라디오 박스 선택 
+
+    - 사용 사례: EC2 → '다음' 버튼 클릭
+
+        ![alt text](./img/iam_role_01.png)
+
+    - 검색 창에 "AdministratorAccess" 입력 → "AdministratorAccess" 체크박스 활성 → '다음' 버튼 클릭
+
+    - 역할 이름: lab-edu-role-ec2
+
+    - '역할 생성' 버튼 클릭
+
+### 2. EC2 instance profile 할당 (IAM Role → EC2 할당)
+
+- **EC2 메인 콘솔 화면 → 인스턴스 리소스 탭 → "lab-edu-ec2-web" 선택 → 작업 → 보안 → IAM 역할 수정**
+
+    ![alt text](./img/iam_role_02.png)
+
+- IAM 역할: *lab-edu-role-ec2* 선택 → 'IAM 역할 업데이트' 버튼 클릭
+
+    ![alt text](./img/iam_role_03.png)
+
+- "lab-edu-ec2-web" 선택 → 인스턴스 상태 → '인스턴스 재부팅' 클릭
+
+    ![alt text](./img/iam_role_04.png)
+
+### 3. Web 서버 접속 및 streamlit 서비스 실행
+
+- Bastion 서버 접속
+
+    - Putty 실행 → SSH 클릭 → Auth 클릭 → Credentilas 클릭 → Browser 클릭 → 'lab-edu-key-ec2.ppk' 선택 
+
+    - Session 클릭 → Host Name: 'ec2-user@*{BASTION_SERVER_PUBLIC_IP}* 입력 → 'Open' 버튼 클릭
+
+- EC2 접속 정보 확인: 인스턴스 메인 콘솔 화면 이동 → '인스턴스' 탭으로 이동 → 'lab-edu-ec2-web' 선택 → 프라이빗 IPv4 주소 복사
+
+- Web 서버 접속
+
+    - Bastion 서버를 접속 한 PuTTY 콘솔 화면에서 다음 명령어 실행
+
+        ```bash
+        ssh -i lab-edu-key-ec2.pem ec2-user@*{WEB_SERVER_PRIVATE_IP}*
+        ```
+
+- Web Service 실행 여부 확인 및 실행 명령어 입력
+
+    ```bash
+    # streamlit의 80번 포트 LISTEN 상태 여부 체크
+    netstat -ntlp
+    Active Internet connections (only servers)
+    Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name
+    tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      1500/sshd: /usr/sbi
+    tcp6       0      0 :::22                   :::*                    LISTEN      1500/sshd: /usr/sbi
+    
+    # 80번 포트 없는 경우 다음 명령어 실행
+    sudo su -
+    cd streamlit-project/
+    streamlit run main.py --server.port 80
+    ```
+
+- 웹 서비스 접속 테스트 (로드밸런서 DNS 정보로 브라우저에서 접속)
+
+    ![alt text](./img/iam_role_05.png)
+
+    
