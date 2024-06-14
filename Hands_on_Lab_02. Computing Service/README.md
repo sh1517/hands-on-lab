@@ -1,11 +1,13 @@
 # Creating Bastion Server
 
 ### 1. EC2 메인 콘솔 화면으로 이동
+
 - **인스턴스 리소스 탭 → '인스턴스 시작' 버튼 클릭**
 
     ![alt text](./img/instance_01.png)
 
 ### 2. EC2 인스턴스 설정 정보 입력 및 생성
+
 - 아래 인스턴스 자원 명세서를 참고하여 정보 입력
 
     - **이름:** *lab-edu-ec2-bastion*
@@ -19,6 +21,7 @@
         ![alt text](./img/instance_02.png)
 
     - **네트워크 설정:**
+
         - '편집' 버튼 클릭
 
         - 네트워크: *lab-edu-vpc-ap-01*
@@ -50,14 +53,19 @@
 - '인스턴스 시작' 버튼 클릭
 
 ### 3. Putty 다운로드
+
 - **다운로드 URL:** https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html
+
 - MSI (Windows Installer) 64-bit x86 다운로
 
     ![alt text](./img/instance_04.png)
+
 - MSI 파일 실행 → 'next' 버튼 클릭 → 'next' 버튼 클릭 → 'Install' 버튼 클릭 → 'Finish' 버튼 클릭
 
 ### 4. Bastion 서버 접속
+
 - 키 페어 확장자 변경 (pem → ppk)
+
     - PuTTYgen 실행 
 
         ![alt text](./img/connection_01.png)
@@ -87,6 +95,7 @@
         ![alt text](./img/connection_07.png)
 
 ### 5. Web Service 구성
+
 - "Hands_on_Lab_02. Computing Resource/install_python.sh" 파일 내용 복사
 
     ![alt text](./img/web_server_01.png)
@@ -96,6 +105,7 @@
     <img src="./img/web_server_02.png" width="800">
 
 - 스크립트 실행 
+
     ```bash
     chmod +x install_python.sh
     ./install_python.sh
@@ -108,6 +118,7 @@
 <br>
 
 # Creating Web Server
+
 ### 1. EC2 메인 콘솔 화면으로 이동
 
 - **인스턴스 리소스 탭 → '인스턴스 시작' 버튼 클릭**
@@ -177,6 +188,7 @@
         ![alt text](./img/web_03.png)
 
     - pem 키 파일 권한 설정
+
         ```bash
         chmod 600 lab-edu-key-ec2.pem
         ```
@@ -184,13 +196,17 @@
 - EC2 접속 정보 확인: 인스턴스 메인 콘솔 화면 이동 → '인스턴스' 탭으로 이동 → 'lab-edu-ec2-web' 선택 → 프라이빗 IPv4 주소 복사
 
 - Web 서버 접속
+
     - Bastion 서버를 접속 한 PuTTY 콘솔 화면에서 다음 명령어 실행
+
         ```bash
         ssh -i lab-edu-key-ec2.pem ec2-user@*{WEB_SERVER_PRIVATE_IP}*
         ```
+
         ![alt text](./img/web_04.png)
     
     - init script 실행 결과 확인
+
         ```bash
         ps -ef | grep streamlit
         ```
@@ -227,6 +243,7 @@
             ![alt text](./img/cloud9_02.png)
 
 ### 3. cloud9 서버 접속
+
 - '열림' 버튼 클릭
 
     ![alt text](./img/cloud9_03.png)
