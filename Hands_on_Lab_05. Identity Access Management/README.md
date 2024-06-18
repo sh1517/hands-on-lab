@@ -82,13 +82,9 @@
 
 - **IAM 메인 콘솔 화면 → 사용자 리소스 탭 → ***"lab-edu-iam-user-01"*** 클릭**
 
-    ![alt text](./img/access_secret_01.png)
-
-- '직접 정책 연결' 라디오 박스 활성화
-
-- 검색 창에 "AdministratorAccess" 입력 → "AdministratorAccess" 체크박스 활성
-
 - '다음' 버튼 클릭 → '권한 추가' 버튼 클릭
+
+    ![alt text](./img/access_secret_01.png)
 
 ### 2. Access key & Secret key 생성
 
