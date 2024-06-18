@@ -141,7 +141,7 @@
 - Remote Repository 등록
 
     ```cmd
-    git remote add ssh://git-codecommit.ap-northeast-2.amazonaws.com/v1/repos/lab-edu-code-streamlit
+    git remote add [CODE_COMMIT_SSH_URL_INFO]
     ```
 
 - 소스코드 Commit 후 Push 테스트
