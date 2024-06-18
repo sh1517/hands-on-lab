@@ -134,6 +134,10 @@
     git branch -M main
     ```
 
+- **CodeCommit 메인 콘솔 화면 → 리포지토리 리소스 탭 → "lab-edu-code-streamlit" 클릭 → "URL 복제" 버튼 클릭 → "SSH 복제" 버튼 클릭**
+
+    ![alt text](./img/push_09.png)
+
 - Remote Repository 등록
 
     ```cmd
