@@ -86,6 +86,11 @@
 
     ![alt text](./img/access_secret_01.png)
 
+- "ReadOnlyAccess" 검색 → 필터링 기준: "AWS 관리형 - 직무" 선택 → "ReadOnlyAccess" 권한 선택 → "다음" 버튼 클릭 → "권한 추가" 버튼 클릭
+
+    ![alt text](./img/iam_setting_01.png)
+
+
 ### 2. Access key & Secret key 생성
 
 - **'보안 자격 증명' 탭으로 이동 → '액세스 키 만들기' 버튼 클릭**
