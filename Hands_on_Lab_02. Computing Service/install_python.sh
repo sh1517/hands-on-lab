@@ -61,7 +61,7 @@ echo "Git & Code Install"
 echo "##################"
 yum install git -y
 cd /root/
-git clone https://github.com/ysh4338/streamlit-project.git
+git clone https://github.com/sh1517/streamlit-project.git
 
 echo "##############"
 echo "Upgrade AWSCLI"
