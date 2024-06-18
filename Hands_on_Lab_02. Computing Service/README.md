@@ -56,7 +56,7 @@
 
 - **다운로드 URL:** https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html
 
-- MSI (Windows Installer) 64-bit x86 다운로
+- MSI (Windows Installer) 64-bit x86 다운로드
 
     ![alt text](./img/instance_04.png)
 
