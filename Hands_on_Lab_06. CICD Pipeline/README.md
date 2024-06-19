@@ -55,7 +55,7 @@
     Default region name [None]: ap-northeast-2
     Default output format [None]: json
     ```
-    ※ Hands on Lab 05. IAM 실습 과정에 생성한 'lab-edu-iam-user-01' access & secret key 입력
+    <span style="color: #0080000">※ Hands on Lab 05. IAM 실습 과정에 생성한 'lab-edu-iam-user-01' access & secret key 입력</span>
 
 ### 4. VS Code → CodeCommit SSH Push 테스트
 
