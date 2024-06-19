@@ -32,7 +32,7 @@
     ![alt text](./img/vs_code_setting_02.png)
 
 
-### 3. Access & Secret key Setting (VS Code)
+### 3. IAM User Access & Secret key Setting (VS Code)
 
 - **IAM 메인 콘솔 화면 → 사용자 리소스 탭 → "lab-edu-iam-user-01" 클릭**
 
@@ -164,6 +164,20 @@
 
 ### 1. CodeDeploy Agent 설치
 
+- Bastion 서버 접속 
+
+    - Putty 실행 → SSH 클릭 → Auth 클릭 → Credentials 클릭 → Browser 클릭 → 'lab-edu-key-ec2.ppk' 선택 
+
+    - Session 클릭 → Host Name: 'ec2-user@*{BASTION_SERVER_PUBLIC_IP}* 입력 → 'Open' 버튼 클릭
+
+- Web 서버 접속
+
+    - Bastion 서버를 접속 한 PuTTY 콘솔 화면에서 다음 명령어 실행
+
+        ```bash
+        ssh -i lab-edu-key-ec2.pem ec2-user@*{WEB_SERVER_PRIVATE_IP}*
+        ```
+
 - 관련 패키지 다운로드
 
     ```bash
@@ -194,6 +208,17 @@
     systemctl status codedeploy-agent   # sudo service codedeploy-agent status
     systemctl start codedeploy-agent    # sudo service codedeploy-agent start
     ```
+
+### 2. IAM Role 권한 설정
+
+- **IAM 메인 콘솔 화면 → 역할 리소스 탭 → "역할 생성" 버튼 클릭**
+
+- "권한 추가" 버튼 클릭 → "권한 추가" 버튼 클릭
+
+- "직접 정책 연결" 라디오 버튼 선택 → "AWSCodeCommitPowerUser" 검색 → "AWSCodeCommitPowerUser" 권한 선택
+
+
+
 
 # Creating CodePipeline
 
