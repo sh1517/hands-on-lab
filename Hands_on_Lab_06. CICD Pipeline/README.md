@@ -209,19 +209,141 @@
     systemctl start codedeploy-agent    # sudo service codedeploy-agent start
     ```
 
-### 2. IAM Role 권한 설정
+### 2. CodeDeploy IAM Role 생성
 
 - **IAM 메인 콘솔 화면 → 역할 리소스 탭 → "역할 생성" 버튼 클릭**
 
-- "권한 추가" 버튼 클릭 → "권한 추가" 버튼 클릭
+- 아래 정보 참고하여 설정
 
-- "직접 정책 연결" 라디오 버튼 선택 → "AWSCodeCommitPowerUser" 검색 → "AWSCodeCommitPowerUser" 권한 선택
+    - 신뢰할 수 있는 엔터티 유형: 'AWS 서비스' 라디오 박스 선택 
 
+    - 사용 사례: CodeDeploy → '다음' 버튼 클릭
 
+    - 권한 추가 창에 "CodeDeployRole" 정책 반영 여부 확인 → '다음' 버튼 클릭
 
+    - 역할 이름: lab-edu-role-codedeploy
+
+    - '역할 생성' 버튼 클릭
+
+### 3. CodeDeploy Application & Deploy 생성
+
+- **CodeDeploy 메인 콘솔 화면 → 애플리케이션 리소스 탭 → "애플리케이션 생성" 버튼 클릭**
+
+- 아래 정보 참고하여 설정
+
+    - 이름: lab-edu-deploy-ec2
+
+    - 컴퓨팅 플랫폼: EC2/On-premises
+
+    - '애플리케이션 생성' 버튼 클릭
+
+        ![alt text](./img/application_01.png)
+
+- 애플리케이션 생성 결과 화면 하단의 '배포 그룹' 탭으로 이동 → "배포 그룹 생성" 버튼 클릭**
+
+    ![alt text](./img/application_02.png)
+
+- 아래 정보 참고하여 설정
+
+    - 이름: lab-edu-deploygroup-ec2
+
+    - 서비스 역할: lab-edu-role-codedeploy
+
+    - 애플리케이션 배포 방법: 현재 위치 (In-place)
+
+        ![alt text](./img/application_03.png)
+
+    - "Amazon EC2 Instances" 체크박스 활성화
+
+    - 키: Name
+
+    - 값: lab-edu-ec2-web
+
+        ![alt text](./img/application_04.png)
+
+    - AWS CodeDeploy 에이전트 설치: "지금 업데이트 및 업데이트 일정 예약" 라디오 버튼 선택 → 1일
+
+        ![alt text](./img/application_05.png)
+
+    - 배포 구성: CodeDeployDefault.OneAtaTime
+
+    - 로드 밸런싱 활성화: 체크 해제 → '배포 그룹 생성' 버튼 클릭
+
+        ![alt text](./img/application_06.png)
 
 # Creating CodePipeline
 
+- **CodePipeline 메인 콘솔 화면 → 파이프라인 리소스 탭 → "파이프라인 생성" 버튼 클릭**
+
+- 아래 정보 참고하여 설정
+
+    - 이름: lab-edu-pipeline-ec2
+
+    - 파이프라인 유형: V1
+
+    - 실행 모드: 대체
+
+    - 서비스 역할: "새 서비스 역할" 라디오 버튼 선택 → 이름: lab-edu-role-pipeline → '다음' 버튼 클릭
+
+        ![alt text](./img/pipeline_01.png)
+
+    - 소스 공급자: CodeCommit → '다음' 버튼 클릭 
+
+    - 리포지토리 이름: lab-edu-code-streamlit
+
+    - 브랜치 이름: main
+
+        ![alt text](./img/pipeline_02.png)
+
+    - '다음' 버튼 클릭 → '빌드 스테이지 건너뛰기' 버튼 클릭 → '건너뛰기' 버튼 클릭 
+
+    - 배포 공급자: AWS CodeDeploy
+
+    - 리전: 아시아 태평양(서울)
+
+    - 애플리케이션 이름: lab-edu-deploy-ec2
+
+    - 배포 그룹: lab-edu-deploygroup-ec2
+
+        ![alt text](./img/pipeline_03.png)
+
+    - '다음' 버튼 클릭 → '파이프라인 생성' 버튼 클릭 
+
+    - 배포 성공 결과 화면 확인
+
+        ![alt text](./img/pipeline_04.png)
+
+# Code Deploy TEST
+
+- 웹 서비스 접속(로드밸런서 DNS 정보로 브라우저에서 접속) → 'Start Stress Test' 버튼 클릭
+
+    ![alt text](./img/deploy_test_01.png)
+
+- VS Code 실행 → 'widget/side_bar.py' 파일 오픈 → 설정 값 수정
+
+    ```python
+    def start_process(timeout=300):
+        stop_process()
+        # command = f"stress --cpu 1 --timeout {timeout}"   #AS-IS
+        command = f"stress --cpu 2 --timeout {timeout}"     #TO-BE
+        subprocess.Popen(command, start_new_session=True, shell=True)
+    ```
+
+- 소스코드 Commit 후 Push
+
+    ```cmd
+    git add .
+    git commit -m "update stress value"
+    git push origin main
+    ```
+
+- AWS CodePipeline 콘솔 확인
+
+    ![alt text](./img/deploy_test_02.png)
+
+- 웹 서비스 접속(로드밸런서 DNS 정보로 브라우저에서 접속) → 'Start Stress Test' 버튼 클릭 → 결과 차이 확인
+
+    ![alt text](./img/deploy_test_03.png)
 
 # Reference Documents
 
@@ -236,3 +358,5 @@
 - https://www.youtube.com/watch?v=_o0GYyKnaI0
 
 - https://github.com/wjdrbs96/Today-I-Learn
+
+- 전체 실습 내용: https://docs.aws.amazon.com/ko_kr/codepipeline/latest/userguide/tutorials-simple-codecommit.html
