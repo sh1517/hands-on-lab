@@ -104,7 +104,7 @@
 
     ![alt text](./img/push_06.png)
 
-- 홈 디렉터리의 ".ssh" 폴더로 이동 (C:\Users\sh****.you/.ssh/) → "config" 생성 후 메모장으로 실행
+- 홈 디렉터리의 ".ssh" 폴더로 이동 (C:\Users\sh****.you/.ssh/) → ***"config" 생성 후 메모장으로 실행***
 
     ![alt text](./img/push_07.png)
 
