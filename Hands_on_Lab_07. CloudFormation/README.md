@@ -15,7 +15,7 @@
 - Data Upload to S3
 
     ```cmd
-    aws s3 cp "Hands_on_Lab_07. CloudFormation\ap-northeast-2\01. vpc_resource.yaml" s3://lab-edu-bucket-cf-repository-975050143000/network-baseline.yaml
+    aws s3 cp "Hands_on_Lab_07. CloudFormation\ap-northeast-2\01. vpc_resource.yaml" s3://lab-edu-bucket-cf-repository-{ACCOUNT_ID}/network-baseline.yaml
     ```
 
 
