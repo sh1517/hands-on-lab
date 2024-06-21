@@ -72,3 +72,23 @@
     |                 |lab-edu-sg-aurora |In-bound|5432| HTTP|   10.0.0.0/16|
 
 
+<br><br>
+
+- **IAM 자원 명세서**
+
+    **IAM_USER**
+
+    |NAME               |Access_Key          |Secret_Key          |CodeCommit_SSH_Key|Permission_Policy|
+    |:---:|:---:|:---:|:---:|:---:|
+    |lab-edu-iam-user-01|****************HLXQ|****************K+xG|id_rsa            |ReadOnlyAccess|
+    |                   |                    |                    |                  |AWSCodeCommitPowerUser|
+
+
+    **IAM_ROLE**
+
+    |NAME                   |Trust_Policy(Service)|Trust_Policy(AWS)|Permission_Policy|
+    |:---:|:---:|:---:|:---:|
+    |lab-edu-role-codedeploy|codedeploy           |-                |AmazonS3FullAccess|
+    |                       |                     |                 |AWSCodeDeployRole|
+    |lab-edu-role-ec2       |ec2                  |-                |AdministratorAccess|
+    |lab-edu-role-pipeline  |codepipeline         |-                |AWSCodePipelineServiceRole|
