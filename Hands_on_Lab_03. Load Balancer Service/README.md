@@ -1,4 +1,4 @@
-# Creating Load Balancer Service
+# Load Balancer 생성
 
 ### 1. Security Group 생성
 
