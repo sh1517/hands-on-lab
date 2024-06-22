@@ -1,4 +1,4 @@
-# Creating Database
+# Database 생성
 
 ### 1. Database Subnet 생성
 
