@@ -1,4 +1,4 @@
-# Creating Bastion Server
+# Bastion Server 생성
 
 ### 1. EC2 메인 콘솔 화면으로 이동
 
@@ -118,7 +118,7 @@
 
 <br>
 
-# Creating Web Server
+# Web Server 생성
 
 ### 1. EC2 메인 콘솔 화면으로 이동
 
@@ -213,7 +213,7 @@
         ```
 <br>
 
-# Creating Cloud9 Server
+# Cloud9 생성
 
 ### 1. cloud9 메인 콘솔 화면으로 이동
 
