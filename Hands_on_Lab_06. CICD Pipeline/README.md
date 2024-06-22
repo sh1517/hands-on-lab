@@ -1,4 +1,4 @@
-# Creating CodeCommit
+# CodeCommit 생성
 
 ### 1. CodeCommit Repository 생성
 
@@ -160,7 +160,7 @@
 
 
 
-# Creating CodeDeploy
+# CodeDeploy 생성
 
 ### 1. CodeDeploy Agent 설치
 
@@ -271,7 +271,7 @@
 
         ![alt text](./img/application_06.png)
 
-# Creating CodePipeline
+# CodePipeline 생성
 
 - **CodePipeline 메인 콘솔 화면 → 파이프라인 리소스 탭 → "파이프라인 생성" 버튼 클릭**
 
@@ -344,19 +344,3 @@
 - 웹 서비스 접속(로드밸런서 DNS 정보로 브라우저에서 접속) → 'Start Stress Test' 버튼 클릭 → 결과 차이 확인
 
     ![alt text](./img/deploy_test_03.png)
-
-# Reference Documents
-
-- AWS CodeDeploy: https://docs.aws.amazon.com/codedeploy/latest/userguide/deployment-configurations-create.html
-
-- https://medium.com/@youngkeun.kim/aws-ci-cd-%EB%B0%B0%ED%8F%AC-%ED%99%98%EA%B2%BD-%EA%B5%AC%EC%B6%95-7fa70ba8bf78
-
-- https://memory-hub.tistory.com/17
-
-- https://dev.classmethod.jp/articles/create-aws-code-pipeline-ci-cd-environment-kr/
-
-- https://www.youtube.com/watch?v=_o0GYyKnaI0
-
-- https://github.com/wjdrbs96/Today-I-Learn
-
-- 전체 실습 내용: https://docs.aws.amazon.com/ko_kr/codepipeline/latest/userguide/tutorials-simple-codecommit.html
