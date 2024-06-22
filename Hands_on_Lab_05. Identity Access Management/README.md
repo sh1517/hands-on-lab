@@ -1,4 +1,4 @@
-# Creating IAM User
+# IAM User 생성
 
 ### 1. IAM User 생성
 
@@ -76,7 +76,7 @@
 
 
 
-# Creating Access key & Secret key
+# Access key & Secret key 생성
 
 ### 1. IAM User AdministratorAccess 권한 할당
 
@@ -162,7 +162,7 @@
 
 <br>
 
-# Creating IAM Role
+# IAM Role 생성
 
 ### 1. IAM Role 생성
 
