@@ -1,4 +1,4 @@
-# Creating Network Baseline
+# Network Baseline 생성
 **네트워크 자원 명세서:** 서울 리전 네트워크 리소스 생성 정보
 |Region|VPC_Name|CIDR|Subnet_Name|CIDR|Routing_Table_Name|
 |:---:|:---:|:---:|:---:|:---:|:---:|
@@ -18,7 +18,7 @@
 
 <br>
 
-## Create VPC
+## VPC 생성
 ### 1. VPC 메인 콘솔 화면으로 이동
 
 ![image](./img/vpc_01.png)
@@ -44,7 +44,7 @@
 
 <br>
 
-## Create Subnet
+## Subnet 생성
 
 ### 1. Subnet 리소스 탭으로 이동
 
