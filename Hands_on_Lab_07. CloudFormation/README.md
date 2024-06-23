@@ -8,6 +8,8 @@
 
 - "직접 정책 연결" 라디오 버튼 선택 → "AmazonS3FullAccess" 검색 → "AmazonS3FullAccess" 권한 선택
 
+
+
 ### 2. CloudFormation YAML 파일 S3 업로드
 
 - VS Code Terminal CMD 화면으로 이동
@@ -58,13 +60,15 @@
     aws s3 cp "%FILE_PATH%\%FILE_NAME%" s3://%BUCKET_NAME%/%OBJ_NAME%
     ```
 
+
+
 ### 3. YAML Template 이용 VPC 생성
 
 - YAML Template 파일 구성 확인
 
     ![alt text](./img/template_01.png)
 
-- 객체 URL 정보 생성
+- 객체 URL 정보 확인 → URL 정보 복사
   
     ```cmd
     set OBJ_URL=https://%BUCKET_NAME%.s3.amazonaws.com/%OBJ_NAME%
@@ -82,17 +86,165 @@
 
     ![alt text](./img/template_03.png)
 
-- 스택 이름: lab-edu-cf-network-baseline-ap → '다음' 버튼 클릭 → '다음' 버튼 클릭 → '전' 버튼 클릭
+- 스택 이름: lab-edu-cf-network-baseline-ap
+
+- '다음' 버튼 클릭 → '다음' 버튼 클릭 → '전송' 버튼 클릭
 
     ![alt text](./img/template_04.png)
 
 
 
 
+### 4. Parameter Section 활용 Public Subnet 생성
+
+- YAML Template 파일 구성 확인
+
+    ![alt text](./img/template_05.png)
+
+- Data Upload to S3
+
+    ```cmd
+    set FILE_NAME=02. subnet_resource.yaml
+    ```
+
+    ```cmd
+    aws s3 cp "%FILE_PATH%\%FILE_NAME%" s3://%BUCKET_NAME%/%OBJ_NAME%
+    ```
+
+- 객체 URL 정보 확인 → URL 정보 복사
+
+    ```cmd
+    echo %OBJ_URL%
+    ```
+
+- **CloudFormation 메인 콘솔 화면 → 스택 리소스 탭 → "lab-edu-cf-network-baseline-ap" 스택 클릭**
+
+    ![alt text](./img/template_06.png)
+
+- **"업데이트" 버튼 클릭**
+
+    ![alt text](./img/template_07.png)
+
+- **"기존 템플릿 교체" 라디오 버튼 클릭 → 객체 URL 정보 입력 → '다음' 버튼 클릭**
+
+    ![alt text](./img/template_08.png)
+
+- **AvailabilityZoneSubnet01:** *ap-northeast-2a* / **AvailabilityZoneSubnet02:** *ap-northeast-2c* 선택 → '다음' 버튼 클릭
+
+    ![alt text](./img/template_09.png)
+
+- '다음' 버튼 클릭 → '전송' 버튼 클릭
+
+
+
+### 5. Output Section 활용 
+
+- YAML Template 파일 구성 확인
+
+    ![alt text](./img/template_10.png)
+
+- Data Upload to S3
+
+    ```cmd
+    set FILE_NAME=03. resource_output.yaml
+    ```
+
+    ```cmd
+    aws s3 cp "%FILE_PATH%\%FILE_NAME%" s3://%BUCKET_NAME%/%OBJ_NAME%
+    ```
+
+- 객체 URL 정보 확인 → URL 정보 복사
+
+    ```cmd
+    echo %OBJ_URL%
+    ```
+
+- **CloudFormation 메인 콘솔 화면 → 스택 리소스 탭 → "lab-edu-cf-network-baseline-ap" 스택 클릭**
+
+- **"업데이트" 버튼 클릭 → "기존 템플릿 교체" 라디오 버튼 클릭 → 객체 URL 정보 입력 → '다음' 버튼 클릭**
+
+- '다음' 버튼 클릭 → '다음' 버튼 클릭 → '전송' 버튼 클릭
+
+
+
+### 6. Metadatea Section의 ParameterGroups 활용 
+
+- YAML Template 파일 구성 확인
+
+    ![alt text](./img/template_11.png)
+
+- Data Upload to S3
+
+    ```cmd
+    set FILE_NAME=04. metadata_parameter_groups.yaml
+    ```
+
+    ```cmd
+    aws s3 cp "%FILE_PATH%\%FILE_NAME%" s3://%BUCKET_NAME%/%OBJ_NAME%
+    ```
+
+- 객체 URL 정보 확인 → URL 정보 복사
+
+    ```cmd
+    echo %OBJ_URL%
+    ```
+
+- **CloudFormation 메인 콘솔 화면 → 스택 리소스 탭 → "lab-edu-cf-network-baseline-ap" 스택 클릭**
+
+- **"업데이트" 버튼 클릭 → "기존 템플릿 교체" 라디오 버튼 클릭 → 객체 URL 정보 입력 → '다음' 버튼 클릭**
+
+- '다음' 버튼 클릭 → '다음' 버튼 클릭
+
+- 'AWS CloudFormation에서 사용자 지정 이름으로 IAM 리소스를 생성할 수 있음을 승인합니다.' 체크박스 클릭 → '전송' 버튼 클릭
+
+    ![alt text](./img/template_12.png)
+
+### 7. 일부 리소스 삭제 
+
+- YAML Template 파일 구성 확인
+
+    ![alt text](./img/template_13.png)
+
+- Data Upload to S3
+
+    ```cmd
+    set FILE_NAME=network_baseline.yaml
+    ```
+
+    ```cmd
+    aws s3 cp "%FILE_PATH%\%FILE_NAME%" s3://%BUCKET_NAME%/%OBJ_NAME%
+    ```
+
+- 객체 URL 정보 확인 → URL 정보 복사
+
+    ```cmd
+    echo %OBJ_URL%
+    ```
+
+# Network Baseline 추가 (us-east-1)
+
+### 1. IAM User 리소스에 "Administrator Access" 권한 할당
+
+- **IAM 메인 콘솔 화면 → 사용자 리소스 탭 → "lab-edu-iam-user-01" 클릭**
+
+- "권한 추가" 버튼 클릭 → "권한 추가" 버튼 클릭
+
+- "직접 정책 연결" 라디오 버튼 선택 → "AdministratorAccess" 검색 → "AdministratorAccess" 권한 선택
+
+
+
+
+
+
+
+
+# Reference
+
 - AWS CLI 이용 CloudFormation Stack 생성
 
     ```cmd
     aws cloudformation create-stack \
     --stack-name lab-edu-cf-network-baseline-ap \
-    --template-body file://"Hands_on_Lab_07. CloudFormation\ap-northeast-2\01. vpc_resource.yaml"
+    --template-body file://"Hands_on_Lab_07. CloudFormation\ap-northeast-2\01. vpc_resource.yaml" \
+    --region us-east-1
     ```
