@@ -45,7 +45,7 @@
 - Data Upload to S3
 
     ```cmd
-    set FILE_PATH=Hands_on_Lab_07. CloudFormation\ap-northeast-2
+    set FILE_PATH=support_files\infra_as_a_code\ap-northeast-2
     ```
 
     ```cmd
@@ -230,6 +230,16 @@
 - "권한 추가" 버튼 클릭 → "권한 추가" 버튼 클릭
 
 - "직접 정책 연결" 라디오 버튼 선택 → "AdministratorAccess" 검색 → "AdministratorAccess" 권한 선택
+
+### 2. network_baseline.yaml 파일 수정
+
+- VS Code 
+
+- "권한 추가" 버튼 클릭 → "권한 추가" 버튼 클릭
+
+- "직접 정책 연결" 라디오 버튼 선택 → "AdministratorAccess" 검색 → "AdministratorAccess" 권한 선택
+
+
 
 
 
