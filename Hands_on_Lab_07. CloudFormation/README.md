@@ -220,6 +220,8 @@
     ```cmd
     echo %OBJ_URL%
     ```
+<br><br>
+
 
 # Network Baseline 추가 (us-east-1)
 
@@ -233,28 +235,136 @@
 
 ### 2. network_baseline.yaml 파일 수정
 
-- VS Code 
+- VS Code 코드 편집기 화면으로 이동
 
-- "권한 추가" 버튼 클릭 → "권한 추가" 버튼 클릭
-
-- "직접 정책 연결" 라디오 버튼 선택 → "AdministratorAccess" 검색 → "AdministratorAccess" 권한 선택
-
-
-
-
-
-
-
-
-
-
-# Reference
-
-- AWS CLI 이용 CloudFormation Stack 생성
+- support_files > infra_as_a_code > us-east-1 폴더의 network_baseline.yaml 파일 열기
 
     ```cmd
-    aws cloudformation create-stack \
-    --stack-name lab-edu-cf-network-baseline-ap \
-    --template-body file://"Hands_on_Lab_07. CloudFormation\ap-northeast-2\01. vpc_resource.yaml" \
-    --region us-east-1
+    streamlit-project/
+    ├─back_end
+    ├─images
+    │  └─animal_picture
+    ├─menu
+    ├─
+    ├─scripts
+    ├─support_files
+    │  ├─infra_as_a_code
+    │  │  ├─ap-northeast-2
+    │  │  │      01. vpc_resource.yaml
+    │  │  │      02. subnet_resource.yaml
+    │  │  │      03. resource_output.yaml
+    │  │  │      04. metadata_parameter_groups.yaml
+    │  │  │      network_baseline.yaml
+    │  │  ├─eu-central-1
+    │  │  │      network_baseline.yaml
+    │  │  └─us-east-1
+    │  │          network_baseline.yaml
+    │  ├─policy
+    │  └─sql_query
+    └─widget
+    ```
+
+- ***<Ctrl + F>*** 명령어 입력 → Find: "10.10." 입력 → ">"*(Angle brackets)* 버튼 클릭 → Replace: "10.20." 입력 → ***<Ctrl + Alt + Enter>*** 입력
+
+    ![alt text](./img/template_14.png)
+
+- Find: "lab-edu-vpc-ap-02" 입력 → Replace: "lab-edu-vpc-us" 입력 → ***<Ctrl + Alt + Enter>*** 입력
+
+- Find: "2nd-ap" 입력 → Replace: "us" 입력 → ***<Ctrl + Alt + Enter>*** 입력
+
+- Find: "ami-0ff1cd0b5d98708d1" 입력 → Replace: "ami-01b799c439fd5516a" 입력 → ***<Ctrl + Alt + Enter>*** 입력
+
+- ***<Ctrl + S>*** 명령어 입력 → VS Code 터미널 창으로 이동 → AWS CLI 이용 CloudFormation Stack 생성
+
+    ```cmd
+    set FILE_PATH=support_files/infra_as_a_code/us-east-1
+    ```
+
+    ```cmd
+    set FILE_NAME=network_baseline.yaml
+    ```
+
+    ```cmd
+    set STACK_NAME=lab-edu-cf-network-baseline-us
+    ```
+
+    ```cmd
+    set REGION=us-east-1
+    ```
+
+    ```cmd
+    aws cloudformation create-stack --stack-name %STACK_NAME% ^
+    --template-body file://%FILE_PATH%/%FILE_NAME% ^
+    --capabilities CAPABILITY_NAMED_IAM ^
+    --region %REGION% ^
+    --parameters ^
+    ParameterKey=AvailabilityZoneSubnet01,ParameterValue=%REGION%a ^
+    ParameterKey=AvailabilityZoneSubnet02,ParameterValue=%REGION%c
+    ```
+<br><br>
+
+
+# Network Baseline 추가 (eu-central-1)
+
+### 1. network_baseline.yaml 파일 수정
+
+- VS Code 코드 편집기 화면으로 이동
+
+- support_files > infra_as_a_code > ue-central-1 폴더의 network_baseline.yaml 파일 열기
+
+    ```cmd
+    streamlit-project/
+    ├─back_end
+    ├─images
+    │  └─animal_picture
+    ├─menu
+    ├─
+    ├─scripts
+    ├─support_files
+    │  ├─infra_as_a_code
+    │  │  ├─ap-northeast-2
+    │  │  │      01. vpc_resource.yaml
+    │  │  │      02. subnet_resource.yaml
+    │  │  │      03. resource_output.yaml
+    │  │  │      04. metadata_parameter_groups.yaml
+    │  │  │      network_baseline.yaml
+    │  │  ├─eu-central-1
+    │  │  │      network_baseline.yaml
+    │  │  └─us-east-1
+    │  │          network_baseline.yaml
+    │  ├─policy
+    │  └─sql_query
+    └─widget
+    ```
+
+- ***<Ctrl + F>*** 명령어 입력 → Find: "10.10." 입력 → ">"*(Angle brackets)* 버튼 클릭 → Replace: "10.30." 입력 → ***<Ctrl + Alt + Enter>*** 입력
+
+- Find: "lab-edu-vpc-ap-02" 입력 → Replace: "lab-edu-vpc-eu" 입력 → ***<Ctrl + Alt + Enter>*** 입력
+
+- Find: "2nd-ap" 입력 → Replace: "eu" 입력 → ***<Ctrl + Alt + Enter>*** 입력
+
+- Find: "ami-0ff1cd0b5d98708d1" 입력 → Replace: "ami-04f1b917806393faa" 입력 → ***<Ctrl + Alt + Enter>*** 입력
+
+- ***<Ctrl + S>*** 명령어 입력 → VS Code 터미널 창으로 이동 → AWS CLI 이용 CloudFormation Stack 생성
+
+    ```cmd
+    set FILE_PATH=support_files/infra_as_a_code/eu-central-1
+    ```
+
+    ```cmd
+    set REGION=eu-central-1
+    ```
+
+    ```cmd
+    set STACK_NAME=lab-edu-cf-network-baseline-eu
+    ```
+
+    ```cmd
+    aws cloudformation create-stack --stack-name %STACK_NAME% ^
+    --template-body file://%FILE_PATH%/%OBJ_NAME% ^
+    --capabilities CAPABILITY_NAMED_IAM ^
+    --region %REGION% ^
+    --parameters ^
+    ParameterKey=AvailabilityZoneSubnet01,ParameterValue=%REGION%a ^
+    ParameterKey=AvailabilityZoneSubnet02,ParameterValue=%REGION%c
     ```
