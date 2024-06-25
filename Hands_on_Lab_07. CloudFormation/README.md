@@ -243,9 +243,7 @@
     streamlit-project/
     ├─back_end
     ├─images
-    │  └─animal_picture
     ├─menu
-    ├─
     ├─scripts
     ├─support_files
     │  ├─infra_as_a_code
@@ -316,9 +314,7 @@
     streamlit-project/
     ├─back_end
     ├─images
-    │  └─animal_picture
     ├─menu
-    ├─
     ├─scripts
     ├─support_files
     │  ├─infra_as_a_code
