@@ -198,21 +198,11 @@
 
 ### 3. Web 서버 접속 및 streamlit 서비스 실행
 
-- Bastion 서버 접속
+- Cloud9 IDE Terminal 접속 → SSH 명령어 실행
 
-    - Putty 실행 → SSH 클릭 → Auth 클릭 → Credentials 클릭 → Browser 클릭 → 'lab-edu-key-ec2.ppk' 선택 
-
-    - Session 클릭 → Host Name: 'ec2-user@*{BASTION_SERVER_PUBLIC_IP}* 입력 → 'Open' 버튼 클릭
-
-- EC2 접속 정보 확인: 인스턴스 메인 콘솔 화면 이동 → '인스턴스' 탭으로 이동 → 'lab-edu-ec2-web' 선택 → 프라이빗 IPv4 주소 복사
-
-- Web 서버 접속
-
-    - Bastion 서버를 접속 한 PuTTY 콘솔 화면에서 다음 명령어 실행
-
-        ```bash
-        ssh -i lab-edu-key-ec2.pem ec2-user@*{WEB_SERVER_PRIVATE_IP}*
-        ```
+    ```bash
+    ssh web-server
+    ```
 
 - Web Service 실행 여부 확인 및 실행 명령어 입력
 
