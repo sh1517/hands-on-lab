@@ -245,7 +245,7 @@
 
 ### 3. cloud9 서버 접속
 
-- '열림' 버튼 클릭
+- Cloud9 IDE '열림' 버튼 클릭
 
     ![alt text](./img/cloud9_03.png)
 
