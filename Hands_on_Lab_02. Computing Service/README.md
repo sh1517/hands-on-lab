@@ -316,12 +316,12 @@
 
         ```bash
         Host bastion
-          HostName [BASTION_SERVER_PRIVATE_IP]
+          HostName {BASTION_SERVER_PRIVATE_IP}
           User ec2-user
           IdentityFile ~/.ssh/lab-edu-key-ec2.pem
 
         Host web-server
-          HostName [WEB_SERVER_PRIVATE_IP]
+          HostName {WEB_SERVER_PRIVATE_IP}
           User ec2-user
           IdentityFile ~/.ssh/lab-edu-key-ec2.pem
         ```
