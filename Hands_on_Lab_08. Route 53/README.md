@@ -6,7 +6,7 @@
 
     ![alt text](./img/hosted_zone_01.png)
 
-- 도메인 이름: **st _[개인 사물함 번호]_ .cj-cloud-wave.com** `ex: st01.cj-cloud-wave.com`
+- 도메인 이름: **st _[개인 사물함 번호]_ .cj-cloud-wave.com** `(EX: st01.cj-cloud-wave.com)`
 
     ![alt text](./img/hosted_zone_02.png)
 
