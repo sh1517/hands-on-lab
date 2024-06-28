@@ -233,44 +233,45 @@
 
 - "직접 정책 연결" 라디오 버튼 선택 → "AdministratorAccess" 검색 → "AdministratorAccess" 권한 선택
 
-### 2. network_baseline.yaml 파일 수정
+### 2. 서울 리전 vs 버지니아 리전 network_baseline.yaml 파일 비교
 
-- VS Code 코드 편집기 화면으로 이동
-
-- support_files > infra_as_a_code > us-east-1 폴더의 network_baseline.yaml 파일 열기
+- Cloud9 IDE Terminal 화면으로 이동 → 폴더 구조 확인
 
     ```cmd
-    streamlit-project/
-    ├─back_end
+    cloud-wave-workspace/
     ├─images
-    ├─menu
     ├─scripts
-    ├─support_files
-    │  ├─infra_as_a_code
-    │  │  ├─ap-northeast-2
-    │  │  │      01. vpc_resource.yaml
-    │  │  │      02. subnet_resource.yaml
-    │  │  │      03. resource_output.yaml
-    │  │  │      04. metadata_parameter_groups.yaml
-    │  │  │      network_baseline.yaml
-    │  │  ├─eu-central-1
-    │  │  │      network_baseline.yaml
-    │  │  └─us-east-1
-    │  │          network_baseline.yaml
-    │  ├─policy
-    │  └─sql_query
-    └─widget
+    └─support_files
+       ├─infra_as_a_code
+       │  ├─ap-northeast-2
+       │  │      01. vpc_resource.yaml
+       │  │      02. subnet_resource.yaml
+       │  │      03. resource_output.yaml
+       │  │      04. metadata_parameter_groups.yaml
+       │  │      network_baseline.yaml
+       │  ├─eu-central-1
+       │  │      network_baseline.yaml
+       │  └─us-east-1
+       │          network_baseline.yaml
+       ├─policy
+       └─sql_query
     ```
 
-- ***<Ctrl + F>*** 명령어 입력 → Find: "10.10." 입력 → ">"*(Angle brackets)* 버튼 클릭 → Replace: "10.20." 입력 → ***<Ctrl + Alt + Enter>*** 입력
+- IaC 코드 파일이 있는 폴더로 이동
 
-    ![alt text](./img/template_14.png)
+    ```bash
+    cd ~/environment/cloud-wave-workspace/support_files/infra_as_a_code/
+    ```
 
-- Find: "lab-edu-vpc-ap-02" 입력 → Replace: "lab-edu-vpc-us" 입력 → ***<Ctrl + Alt + Enter>*** 입력
+- 서울리전, 버지니아 리전 Yaml 파일 비교 명령어 실행
 
-- Find: "2nd-ap" 입력 → Replace: "us" 입력 → ***<Ctrl + Alt + Enter>*** 입력
+    ```bash
+    diff -y ap-northeast-2/network_baseline.yaml us-east-1/network_baseline.yaml
+    ```
 
-- Find: "ami-0ff1cd0b5d98708d1" 입력 → Replace: "ami-01b799c439fd5516a" 입력 → ***<Ctrl + Alt + Enter>*** 입력
+### 3. 버지니아 리전 network_baseline.yaml 배포
+
+- VS Code Terminal 화면으로 이동
 
 - ***<Ctrl + S>*** 명령어 입력 → VS Code 터미널 창으로 이동 → AWS CLI 이용 CloudFormation Stack 생성
 
@@ -304,44 +305,45 @@
 
 # Network Baseline 추가 (eu-central-1)
 
-### 1. network_baseline.yaml 파일 수정
+### 1. 서울 리전 vs 프랑크프루트 리전 network_baseline.yaml 파일 비교
 
-- VS Code 코드 편집기 화면으로 이동
-
-- support_files > infra_as_a_code > ue-central-1 폴더의 network_baseline.yaml 파일 열기
+- Cloud9 IDE Terminal 화면으로 이동 → 폴더 구조 확인
 
     ```cmd
-    streamlit-project/
-    ├─back_end
+    cloud-wave-workspace/
     ├─images
-    ├─menu
     ├─scripts
-    ├─support_files
-    │  ├─infra_as_a_code
-    │  │  ├─ap-northeast-2
-    │  │  │      01. vpc_resource.yaml
-    │  │  │      02. subnet_resource.yaml
-    │  │  │      03. resource_output.yaml
-    │  │  │      04. metadata_parameter_groups.yaml
-    │  │  │      network_baseline.yaml
-    │  │  ├─eu-central-1
-    │  │  │      network_baseline.yaml
-    │  │  └─us-east-1
-    │  │          network_baseline.yaml
-    │  ├─policy
-    │  └─sql_query
-    └─widget
+    └─support_files
+       ├─infra_as_a_code
+       │  ├─ap-northeast-2
+       │  │      01. vpc_resource.yaml
+       │  │      02. subnet_resource.yaml
+       │  │      03. resource_output.yaml
+       │  │      04. metadata_parameter_groups.yaml
+       │  │      network_baseline.yaml
+       │  ├─eu-central-1
+       │  │      network_baseline.yaml
+       │  └─us-east-1
+       │          network_baseline.yaml
+       ├─policy
+       └─sql_query
     ```
 
-- ***<Ctrl + F>*** 명령어 입력 → Find: "10.10." 입력 → ">"*(Angle brackets)* 버튼 클릭 → Replace: "10.30." 입력 → ***<Ctrl + Alt + Enter>*** 입력
+- IaC 코드 파일이 있는 폴더로 이동
 
-- Find: "lab-edu-vpc-ap-02" 입력 → Replace: "lab-edu-vpc-eu" 입력 → ***<Ctrl + Alt + Enter>*** 입력
+    ```bash
+    cd ~/environment/cloud-wave-workspace/support_files/infra_as_a_code/
+    ```
 
-- Find: "2nd-ap" 입력 → Replace: "eu" 입력 → ***<Ctrl + Alt + Enter>*** 입력
+- 서울리전, 프랑크프루트 리전 Yaml 파일 비교 명령어 실행
 
-- Find: "ami-0ff1cd0b5d98708d1" 입력 → Replace: "ami-04f1b917806393faa" 입력 → ***<Ctrl + Alt + Enter>*** 입력
+    ```bash
+    diff -y ap-northeast-2/network_baseline.yaml eu-central-1/network_baseline.yaml
+    ```
 
-- ***<Ctrl + S>*** 명령어 입력 → VS Code 터미널 창으로 이동 → AWS CLI 이용 CloudFormation Stack 생성
+### 2. 프랑크프루트 리전 network_baseline.yaml 배포
+
+- VS Code Terminal 화면으로 이동
 
     ```cmd
     set FILE_PATH=support_files/infra_as_a_code/eu-central-1
