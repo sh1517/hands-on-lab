@@ -89,7 +89,7 @@
 
 ### 5. PostgreSQL 접속 테스트
 
-- Bastion 서버 접속
+- Cloud9 IDE 서버 접속
 
     - Putty 실행 → SSH 클릭 → Auth 클릭 → Credentials 클릭 → Browser 클릭 → 'lab-edu-key-ec2.ppk' 선택 
 
