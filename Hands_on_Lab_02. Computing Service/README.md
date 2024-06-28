@@ -70,7 +70,7 @@
 
         ![alt text](./img/connection_01.png)
 
-    - 'Load' 버튼 클릭 → pem 키 파일 다운로드 받을 폴더로 이동 → 확장자 명을 'All Files (*.*)로 변경 → pem 키 파일 선택
+    - 'Load' 버튼 클릭 → pem 키 파일 다운로드 받은 폴더로 이동 → 확장자 명을 'All Files (*.*)로 변경 → pem 키 파일 선택
 
         ![alt text](./img/connection_02.png)
 
@@ -252,3 +252,121 @@
 - 'Welcome' 페이지 종료 → 'Command Terminal' 화면 상단으로 Drag & Drop
 
     ![alt text](./img/cloud9_04.png)
+
+### 4. Workspace Settings
+
+- Workspace 폴더 생성
+
+    ```bash
+    mkdir cloud-wave-workspace
+    cd cloud-wave-workspace
+    ```
+
+- Git Local 저장소 초기화 및 원격 저장소 추가
+
+    ```bash
+    git config --global init.defaultBranch main
+    git init
+    git remote add origin https://github.com/sh1517/streamlit-project.git
+    ```
+
+- Sparse Checkout 활성화 및 패턴 설정
+
+    ```bash
+    git config core.sparseCheckout true
+    echo "images/" >> .git/info/sparse-checkout
+    echo "scripts/" >> .git/info/sparse-checkout
+    echo "support_files/" >> .git/info/sparse-checkout
+    ```
+
+- Remote 저장소에서 필요한 폴더만 다운로드
+
+    ```bash
+    git pull origin main
+    ```
+
+### 5. EC2 Pem Key 업로드
+
+- Cloud9 IDE 화면 → 'File' 버튼 클릭 → 'Upload Local Files...' 버튼 클릭
+
+    ![alt text](./img/cloud9_05.png)
+
+- 'Select files' 버튼 클릭 → pem 키 파일 다운로드 받은 폴더로 이동 → pem 키 선택 → '열기' 버튼 클릭
+
+    ![alt text](./img/cloud9_06.png)
+
+- SSH Config 설정
+
+    - Pem Key 파일 폴더 이동
+
+        ```bash
+        cd ~/environment/
+        mv ./lab-edu-key-ec2.pem ~/.ssh/
+        ```
+
+    - config 파일 생성 
+
+        ```bash
+        touch config
+        ```
+
+    - Cloud9 IDE 좌측 패널의 'config' 파일 더블 클릭 → 설정 값 입력
+
+        ![alt text](./img/cloud9_07.png)
+
+        ```bash
+        Host bastion
+          HostName [BASTION_SERVER_PRIVATE_IP]
+          User ec2-user
+          IdentityFile ~/.ssh/lab-edu-key-ec2.pem
+
+        Host web-server
+          HostName [WEB_SERVER_PRIVATE_IP]
+          User ec2-user
+          IdentityFile ~/.ssh/lab-edu-key-ec2.pem
+        ```
+
+    - Bastion, WEB Server Private IP 주소 확인 → SSH config 설정 값 수정 → 저장 ***(Ctrl + S)***
+
+        ```bash
+        Host bastion
+          HostName 10.0.0.105
+          User ec2-user
+          IdentityFile ~/.ssh/lab-edu-key-ec2.pem
+
+        Host web-server
+          HostName 10.0.40.128
+          User ec2-user
+          IdentityFile ~/.ssh/lab-edu-key-ec2.pem
+        ```
+
+    - config 파일 폴더 이동
+
+        ```bash
+        cd ~/environment/
+        mv ./config ~/.ssh/
+        ```
+
+### 6. Bastion, Web Server 접속 테스트
+
+- Bastion 서버 접속 테스트
+
+    ```bash
+    chmod 600 ~/.ssh/lab-edu-key-ec2.pem 
+    ssh bastion
+    ```
+
+- Web 서버 접속 테스트
+
+    - Cloud IDE 새로운 Terminal 생성: '＋' 버튼 클릭 → 'New Termianl' 버튼 클릭 
+
+        ![alt text](./img/cloud9_08.png)
+
+    - ssh 명령어 실행
+
+        ```bash
+        ssh web-server
+        ```
+
+
+
