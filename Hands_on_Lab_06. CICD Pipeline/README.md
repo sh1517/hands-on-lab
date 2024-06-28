@@ -164,19 +164,11 @@
 
 ### 1. CodeDeploy Agent 설치
 
-- Bastion 서버 접속 
+- Cloud9 IDE Terminal 접속 → SSH 명령어 실행
 
-    - Putty 실행 → SSH 클릭 → Auth 클릭 → Credentials 클릭 → Browser 클릭 → 'lab-edu-key-ec2.ppk' 선택 
-
-    - Session 클릭 → Host Name: 'ec2-user@*{BASTION_SERVER_PUBLIC_IP}* 입력 → 'Open' 버튼 클릭
-
-- Web 서버 접속
-
-    - Bastion 서버를 접속 한 PuTTY 콘솔 화면에서 다음 명령어 실행
-
-        ```bash
-        ssh -i lab-edu-key-ec2.pem ec2-user@*{WEB_SERVER_PRIVATE_IP}*
-        ```
+    ```bash
+    ssh web-server
+    ```
 
 - 관련 패키지 다운로드
 
