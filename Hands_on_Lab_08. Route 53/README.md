@@ -203,6 +203,7 @@
 - Cloud9 IDE Terminal 화면 이동 → dig 명령 입력 (수 차례 시도 시 가중치 기반 ANSWER SECTION 값 변경)
 
     ```bash
+    # 첫 번째 도메인 주소 검색 시도
     hands-on:~/environment $ dig weighted.cj-cloud-wave.com
 
     ; <<>> DiG 9.16.48-RH <<>> weighted.cj-cloud-wave.com
@@ -224,6 +225,7 @@
     ;; WHEN: Sat Jun 29 00:18:36 UTC 2024
     ;; MSG SIZE  rcvd: 71
 
+    # 두 번째 도메인 주소 검색 시도
     hands-on:~/environment $ dig weighted.cj-cloud-wave.com
 
     ; <<>> DiG 9.16.48-RH <<>> weighted.cj-cloud-wave.com
