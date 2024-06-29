@@ -46,11 +46,11 @@
 
 ### 3. 서울, 버지니아, 프랑크프루트 웹 서버 Public IP 메모
 
-- 인스턴스 메인 콘솔 화면 이동 → '인스턴스' 탭으로 이동 → 서울 리전으로 이동 → 'aws-cloud9-lab-edu-*' 선택 → 퍼블릭 IPv4 주소 복사 → 메모장 붙여 넣기
+- EC2 콘솔 메인 화면 → '인스턴스' 탭 → 서울 리전 → 'aws-cloud9-lab-edu-*' 선택 → Public IP 주소 복사 → 메모장 붙여 넣기
 
-- 버지니아 리전으로 이동 → 'lab-edu-ec2-web-us' 선택 → 퍼블릭 IPv4 주소 복사 → 메모장 붙여 넣기
+- 버지니아 리전으 → 'lab-edu-ec2-web-us' 선택 → Public IP 주소 복사 → 메모장 붙여 넣기
 
-- 프랑크프루트 리전으로 이동 → 'lab-edu-ec2-web-eu' 선택 → 퍼블릭 IPv4 주소 복사 → 메모장 붙여 넣기
+- 프랑크프루트 리전 → 'lab-edu-ec2-web-eu' 선택 → Public IP 주소 복사 → 메모장 붙여 넣기
 
     ```
     ap-northeast-2  3.34.197.127
@@ -76,7 +76,7 @@
 
 - Routing Policy 생성 정보 입력
 
-    - 레코드 이름: ***<span style="color:orange">simple</span>.domain-name.com***
+    - 레코드 이름: ***<span style="color:orange">simple</span>.cj-cloud-wave.com***
 
     - 레코드 유형: ***A***
 
@@ -92,7 +92,7 @@
 
 ### 3. Multy Value Simple Routing Policy 생성
 
-- Route 53 레코드 편집 화면으로 이동 → 'simple.domain-name.com' 레코드 클릭 → '레코드 편집' 버튼 클릭
+- Route 53 레코드 편집 화면으로 이동 → 'simple.cj-cloud-wave.com' 레코드 클릭 → '레코드 편집' 버튼 클릭
 
     ![alt text](./img/simple_policy_05.png)
 
@@ -150,7 +150,7 @@
 
 - Routing Policy 생성 정보 입력 (서울 리전) → '다른 레코드 추가' 버튼 클릭
 
-    - 레코드 이름: ***<span style="color:orange">weighted</span>.domain-name.com***
+    - 레코드 이름: ***<span style="color:orange">weighted</span>.cj-cloud-wave.com***
 
     - 레코드 유형: ***A***
 
@@ -168,7 +168,7 @@
 
 - Routing Policy 생성 정보 입력 (버지니아 리전) → '다른 레코드 추가' 버튼 클릭
 
-    - 레코드 이름: ***<span style="color:orange">weighted</span>.domain-name.com***
+    - 레코드 이름: ***<span style="color:orange">weighted</span>.cj-cloud-wave.com***
 
     - 레코드 유형: ***A***
 
@@ -184,7 +184,7 @@
 
 - Routing Policy 생성 정보 입력 (프랑크프루트 리전) → '레코드 생성' 버튼 클릭
 
-    - 레코드 이름: ***<span style="color:orange">weighted</span>.domain-name.com***
+    - 레코드 이름: ***<span style="color:orange">weighted</span>.cj-cloud-wave.com***
 
     - 레코드 유형: ***A***
 
@@ -202,7 +202,7 @@
 
 - Cloud9 IDE Terminal 화면 이동 → dig 명령 입력 (수 차례 시도 시 가중치 기반 ANSWER SECTION 값 변경)
 
-    ```bash
+    ```Bash
     # 첫 번째 도메인 주소 검색 시도
     hands-on:~/environment $ dig weighted.cj-cloud-wave.com
 
@@ -247,15 +247,378 @@
     ;; WHEN: Sat Jun 29 00:18:39 UTC 2024
     ;; MSG SIZE  rcvd: 71
     ```
-
-
-
-
+<br><br>
 
 
 
 # Route 53 Latency Routing Policy
 
+### 1. Latency Routing Policy 생성 
+
+- **Route 53 메인 콘솔 화면 → 호스팅 영역 리소스 탭 → "stxx.cj-cloud-wave.com" 클릭**
+
+- '레코드 생성' 버튼 클릭
+
+- Routing Policy 생성 정보 입력 (서울 리전) → '다른 레코드 추가' 버튼 클릭
+
+    - 레코드 이름: ***<span style="color:orange">latency</span>.cj-cloud-wave.com***
+
+    - 레코드 유형: ***A***
+
+    - 값: ***<span style="color:orange">ap-northeast-2</span> web server public ip***
+
+    - TTL(option): ***1초***
+
+    - Routing Policy: 지연 시간
+
+    - Region: ap-northeast-2
+
+    - Record id: ap-northeast-2
+
+- Routing Policy 생성 정보 입력 (버지니아 리전) → '다른 레코드 추가' 버튼 클릭
+
+    - 레코드 이름: ***<span style="color:orange">latency</span>.cj-cloud-wave.com***
+
+    - 레코드 유형: ***A***
+
+    - 값: ***<span style="color:orange">us-east-1</span> web server public ip***
+
+    - TTL(option): ***1초***
+
+    - Routing Policy: 지연 시간
+
+    - Region: us-east-1
+
+    - Record id: us-east-1
+
+- Routing Policy 생성 정보 입력 (프랑크푸르트 리전) → '레코드 생성' 버튼 클릭
+
+    - 레코드 이름: ***<span style="color:orange">latency</span>.cj-cloud-wave.com***
+
+    - 레코드 유형: ***A***
+
+    - 값: ***<span style="color:orange">eu-central-1</span> web server public ip***
+
+    - TTL(option): ***1초***
+
+    - Routing Policy: 지연 시간
+
+    - Region: eu-central-1
+
+    - Record id: eu-central-1
+
+### 2. Linux 'dig' 명령어 이용 DNS record 값 반영 확인
+
+- Cloud9 IDE Terminal 화면 이동 → dig 명령 입력 (서울 리전의 Cloud9 Public IP 반환)
+
+    ```bash
+    hands-on:~/environment $ dig latency.cj-cloud-wave.com
+
+    ; <<>> DiG 9.16.48-RH <<>> latency.cj-cloud-wave.com
+    ;; global options: +cmd
+    ;; Got answer:
+    ;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 37078
+    ;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+    ;; OPT PSEUDOSECTION:
+    ; EDNS: version: 0, flags:; udp: 4096
+    ;; QUESTION SECTION:
+    ;latency.cj-cloud-wave.com.     IN      A
+
+    ;; ANSWER SECTION:
+    latency.cj-cloud-wave.com. 1    IN      A       3.39.232.95
+
+    ;; Query time: 40 msec
+    ;; SERVER: 10.0.0.2#53(10.0.0.2)
+    ;; WHEN: Sat Jun 29 14:02:53 UTC 2024
+    ;; MSG SIZE  rcvd: 70
+    ```
+
+- 버지니아 리전으로 이동 → EC2 콘솔 메인 화면 → 인스턴스 리소스 탭 → 'lab-edu-ec2-web-us' 선택 → '연결' 버튼 클릭
+
+    ![alt text](./img/latency_01.png)
+
+- 'Session Manager' 탭으로 이동 → '연결' 버튼 클릭
+
+    ![alt text](./img/latency_02.png)
+
+- dig 명령 입력 (버지니아 리전의 Web Server Public IP 반환)
+
+    ```bash
+    [root@ip-172-31-86-65 ~]# sudo su -
+    ```
+
+    ```bash
+    [root@ip-172-31-86-65 ~]# dig latency.cj-cloud-wave.com
+
+    ; <<>> DiG 9.16.48-RH <<>> latency.cj-cloud-wave.com
+    ;; global options: +cmd
+    ;; Got answer:
+    ;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 62920
+    ;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+    ;; OPT PSEUDOSECTION:
+    ; EDNS: version: 0, flags:; udp: 4096
+    ;; QUESTION SECTION:
+    ;latency.cj-cloud-wave.com.     IN      A
+
+    ;; ANSWER SECTION:
+    latency.cj-cloud-wave.com. 1    IN      A       54.211.146.40
+
+    ;; Query time: 0 msec
+    ;; SERVER: 172.31.0.2#53(172.31.0.2)
+    ;; WHEN: Sat Jun 29 14:10:01 UTC 2024
+    ;; MSG SIZE  rcvd: 70
+    ```
+
+- 프랑크프루트 리전으로 이동 → EC2 콘솔 메인 화면 → 인스턴스 리소스 탭 → 'lab-edu-ec2-web-eu' 선택 → '연결' 버튼 클릭
+
+- 'Session Manager' 탭으로 이동 → '연결' 버튼 클릭
+
+- dig 명령 입력 (프랑크푸르 리전의 Web Server Public IP 반환)
+
+    ```bash
+    [root@ip-172-31-86-65 ~]# sudo su -
+    ```
+
+    ```bash
+    [root@ip-172-31-27-248 ~]# dig latency.cj-cloud-wave.com
+
+    ; <<>> DiG 9.16.48-RH <<>> latency.cj-cloud-wave.com
+    ;; global options: +cmd
+    ;; Got answer:
+    ;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 37241
+    ;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+    ;; OPT PSEUDOSECTION:
+    ; EDNS: version: 0, flags:; udp: 4096
+    ;; QUESTION SECTION:
+    ;latency.cj-cloud-wave.com.     IN      A
+
+    ;; ANSWER SECTION:
+    latency.cj-cloud-wave.com. 1    IN      A       3.71.35.240
+
+    ;; Query time: 9 msec
+    ;; SERVER: 172.31.0.2#53(172.31.0.2)
+    ;; WHEN: Sat Jun 29 14:11:49 UTC 2024
+    ;; MSG SIZE  rcvd: 70
+    ```
+<br><br>
+
+
+
 # Route 53 Failover Routing Policy
 
+### 1. Route 53 Health Check 생성
+
+- **Route 53 메인 콘솔 화면 → 상태 검사 리소스 탭 → "상태 검사 생성" 버튼 클릭**
+
+    ![alt text](./img/failover_01.png)
+
+- 상태 검사기 생성 정보 입력 (서울 리전)
+
+    - 이름: ap-northeast-1
+
+    - IP 주소: ***<span style="color:orange">ap-northeast-2</span> web server public ip***
+
+    - '고급 구성' → 요청 간격: 빠름 (10초)
+
+    - '고급 구성' → 실패 임계값: 1
+
+    - '고급 구성' → 상태 검사기 리전: 사용자 지정
+  
+        - 아시아 태평양(도쿄)
+        - 아시아 태평양(시드니)
+        - 아시아 태평양(싱가포르)
+
+        ![alt text](./img/failover_02.png)
+
+- 상태 검사기 생성 정보 입력 (버지니아 리전)
+
+    - 이름: us-east-1
+
+    - IP 주소: ***<span style="color:orange">us-east-1</span> web server public ip***
+
+    - '고급 구성' → 요청 간격: 빠름 (10초)
+
+    - '고급 구성' → 실패 임계값: 1
+
+    - '고급 구성' → 상태 검사기 리전: 사용자 지정
+  
+        - 미국 동부(버지니아 북부)
+        - 미국 서부(캘리포니아 북부)
+        - 미국 서부(오레곤 북부)
+
+### 2. Fail-over Routing Policy 생성 
+
+- **Route 53 메인 콘솔 화면 → 호스팅 영역 리소스 탭 → "stxx.cj-cloud-wave.com" 클릭**
+
+- '레코드 생성' 버튼 클릭
+
+- Routing Policy 생성 정보 입력 (서울 리전) → '다른 레코드 추가' 버튼 클릭
+
+    - 레코드 이름: ***<span style="color:orange">failover</span>.cj-cloud-wave.com***
+
+    - 레코드 유형: ***A***
+
+    - 값: ***<span style="color:orange">ap-northeast-2</span> web server public ip***
+
+    - TTL(option): ***1초***
+
+    - Routing Policy: 장애 조치
+
+    - Failover record type: Primary
+
+    - Health check: ap-northeast-2
+
+    - Record id: ap-northeast-2
+
+- Routing Policy 생성 정보 입력 (버지니아 리전) → '레코드 생성' 버튼 클릭
+
+    - 레코드 이름: ***<span style="color:orange">failover</span>.cj-cloud-wave.com***
+
+    - 레코드 유형: ***A***
+
+    - 값: ***<span style="color:orange">us-east-1</span> web server public ip***
+
+    - TTL(option): ***1초***
+
+    - Routing Policy: 장애 조치
+
+    - Failover record type: Secondary
+
+    - Health check: us-east-1
+
+    - Record id: us-east-1
+
+### 3. 웹 서비스 접속 테스트 (http://failover.stxx.cj-cloud-wave.com/ 접속)
+  
+![alt text](./img/failover_03.png)
+
+### 4. Fail-over 테스트
+
+- EC2 콘솔 메인 화면 → 인스턴스 리소스 탭 → 'aws-cloud9-lab-edu-*' 선택 → '인스턴스 상태' 버튼 클릭 → '인스턴스 중지' 버튼 클릭
+
+- **Route 53 메인 콘솔 화면 → 상태 검사 리소스 탭 → 'ap-northeast-2' 상태 값 확인 (정상 → 비정상)
+
+    ![alt text](./img/failover_04.png)
+
+- 웹 서비스 접속 테스트 (http://failover.stxx.cj-cloud-wave.com/ 접속) → 버지니아 리전 접속 확인
+
+    ![alt text](./img/failover_05.png)
+<br><br>
+
+
+
 # Route 53 Geolocation Routing Policy
+
+### 1. Geolocation Routing Policy 생성 
+
+- **Route 53 메인 콘솔 화면 → 호스팅 영역 리소스 탭 → "stxx.cj-cloud-wave.com" 클릭**
+
+- '레코드 생성' 버튼 클릭
+
+- Routing Policy 생성 정보 입력 (서울 리전) → '다른 레코드 추가' 버튼 클릭
+
+    - 레코드 이름: ***<span style="color:orange">geolocation</span>.cj-cloud-wave.com***
+
+    - 레코드 유형: ***A***
+
+    - 값: ***<span style="color:orange">ap-northeast-2</span> web server public ip***
+
+    - TTL(option): ***1초***
+
+    - Routing Policy: 지리적 위치
+
+    - Location: Default
+
+    - Record id: ap-northeast-2
+
+- Routing Policy 생성 정보 입력 (버지니아 리전) → '다른 레코드 추가' 버튼 클릭
+
+    - 레코드 이름: ***<span style="color:orange">geolocation</span>.cj-cloud-wave.com***
+
+    - 레코드 유형: ***A***
+
+    - 값: ***<span style="color:orange">us-east-1</span> web server public ip***
+
+    - TTL(option): ***1초***
+
+    - Routing Policy: 지리적 위치
+
+    - Location: 미국
+
+    - Record id: us-east-1
+
+- Routing Policy 생성 정보 입력 (프랑크푸르트 리전) → '레코드 생성' 버튼 클릭
+
+    - 레코드 이름: ***<span style="color:orange">geolocation</span>.cj-cloud-wave.com***
+
+    - 레코드 유형: ***A***
+
+    - 값: ***<span style="color:orange">eu-central-1</span> web server public ip***
+
+    - TTL(option): ***1초***
+
+    - Routing Policy: 지리적 위치
+
+    - Location: 유럽
+
+    - Record id: eu-central-1
+
+### 2. Linux 'dig' 명령어 이용 DNS record 값 반영 확인
+
+- Cloud9 IDE Terminal 화면 이동 → dig 명령 입력 (서울 리전의 Cloud9 Public IP 반환)
+
+    ```bash
+    hands-on:~/environment $ dig geolocation.cj-cloud-wave.com
+
+    ; <<>> DiG 9.16.48-RH <<>> geolocation.cj-cloud-wave.com
+    ;; global options: +cmd
+    ;; Got answer:
+    ;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 48699
+    ;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+    ;; OPT PSEUDOSECTION:
+    ; EDNS: version: 0, flags:; udp: 4096
+    ;; QUESTION SECTION:
+    ;geolocation.cj-cloud-wave.com. IN      A
+
+    ;; ANSWER SECTION:
+    geolocation.cj-cloud-wave.com. 1 IN     A       3.39.232.95
+
+    ;; Query time: 40 msec
+    ;; SERVER: 10.0.0.2#53(10.0.0.2)
+    ;; WHEN: Sat Jun 29 15:11:11 UTC 2024
+    ;; MSG SIZE  rcvd: 74
+    ```
+
+- Local DNS 서버 IP 변경 (Alabama) → dig 명령 입력 (미국 리전의 EC2 웹 서버 Public IP 반환)
+
+    ```bash
+    sudo bash -c "echo 'nameserver 12.195.1.194' > /etc/resolv.conf"
+    ```
+
+    ```bash
+    hands-on:~/environment $ dig geolocation.cj-cloud-wave.com
+
+    ; <<>> DiG 9.16.48-RH <<>> geolocation.cj-cloud-wave.com
+    ;; global options: +cmd
+    ;; Got answer:
+    ;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 32152
+    ;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+    ;; OPT PSEUDOSECTION:
+    ; EDNS: version: 0, flags:; udp: 512
+    ;; QUESTION SECTION:
+    ;geolocation.cj-cloud-wave.com. IN      A
+
+    ;; ANSWER SECTION:
+    geolocation.cj-cloud-wave.com. 1 IN     A       54.211.146.40
+
+    ;; Query time: 320 msec
+    ;; SERVER: 12.195.1.194#53(12.195.1.194)
+    ;; WHEN: Sat Jun 29 15:21:53 UTC 2024
+    ;; MSG SIZE  rcvd: 74
+    ```
+    ***※ DNS 서버 국가 목록: https://ko.ipshu.com/dns-country-list***
