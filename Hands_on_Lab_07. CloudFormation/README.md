@@ -359,10 +359,11 @@
 
     ```cmd
     aws cloudformation create-stack --stack-name %STACK_NAME% ^
-    --template-body file://%FILE_PATH%/%OBJ_NAME% ^
+    --template-body file://%FILE_PATH%/%FILE_NAME% ^
     --capabilities CAPABILITY_NAMED_IAM ^
     --region %REGION% ^
     --parameters ^
     ParameterKey=AvailabilityZoneSubnet01,ParameterValue=%REGION%a ^
     ParameterKey=AvailabilityZoneSubnet02,ParameterValue=%REGION%c
     ```
+    
