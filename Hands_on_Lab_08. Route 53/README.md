@@ -48,7 +48,7 @@
 
 - EC2 콘솔 메인 화면 → '인스턴스' 탭 → 서울 리전 → 'aws-cloud9-lab-edu-*' 선택 → Public IP 주소 복사 → 메모장 붙여 넣기
 
-- 버지니아 리전으 → 'lab-edu-ec2-web-us' 선택 → Public IP 주소 복사 → 메모장 붙여 넣기
+- 버지니아 리전 → 'lab-edu-ec2-web-us' 선택 → Public IP 주소 복사 → 메모장 붙여 넣기
 
 - 프랑크프루트 리전 → 'lab-edu-ec2-web-eu' 선택 → Public IP 주소 복사 → 메모장 붙여 넣기
 
