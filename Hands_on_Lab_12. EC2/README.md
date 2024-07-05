@@ -94,10 +94,110 @@
 
 ### 4. OpenVPN 테스트
 
-- EC2 접속 정보 확인: 인스턴스 메인 콘솔 화면 이동 → '인스턴스' 탭으로 이동 → 'lab-edu-ec2-web' 선택 → 프라이빗 IPv4 주소 복사
+- EC2 접속 정보 확인: 인스턴스 메인 콘솔 화면 이동 → '인스턴스' 탭으로 이동 → *lab-edu-ec2-web* 선택 → 프라이빗 IPv4 주소 복사
 
-- Putty 실행 → SSH 클릭 → Auth 클릭 → Credentials 클릭 → Browser 클릭 → 'lab-edu-key-ec2.ppk' 선택 
+- Putty 실행 → SSH 클릭 → Auth 클릭 → Credentials 클릭 → Browser 클릭 → *lab-edu-key-ec2.ppk* 선택 
 
 - Session 클릭 → Host Name: 'ec2-user@*{WEB_SERVER_PRIVATE_IP}* 입력 → 'Open' 버튼 클릭
 
-- 웹 브라우저에서 주소창에 *{WEB_SERVER_PRIVATE_IP}* 입력 
+- 웹 브라우저에서 주소창에 *{WEB_SERVER_PRIVATE_IP}* 입력 .
+<br><br>
+
+
+
+# AMI(Amazon Machine Image) 생성 및 EC2 생성
+
+### 1. AMI 생성
+
+- **EC2 콘솔 메인 화면 → 인스턴스 리소스 탭 → *lab-edu-ec2-web* 선택 → '작업' → '이미지 및 템플릿' → '이미지 생성' 클릭**
+
+    ![alt text](./img/ami_01.png)
+
+- AMI 생성 정보 입력
+
+    - 이미지 이름: lab-edu-ami-web-v1-{YYMMDD}
+
+    - '재부팅 안 함' 체크 박스 활성화
+
+    - '생성' 버튼 클릭
+
+        ![alt text](./img/ami_02.png)
+
+- EC2 콘솔 메인 화면 → AMI 리소스 탭 → AMI 생성 결과 확인 
+
+    ![alt text](./img/ami_03.png)
+    
+### 2. AMI 이용 EC2 생성
+
+- 'lab-edu-ami-web-v1-{YYMMDD}' AMI 선택 → 'AMI'로 인스턴스 시작' 버튼 클릭
+
+    ![alt text](./img/ami_04.png)
+
+- 인스턴스 생성 정보 입력
+
+    - 이름: lab-edu-ec2-web
+
+    - 키 페어: lab-edu-key-ec2
+
+    - VPC: lab-edu-vpc-ap-01
+
+    - Subnet: lab-edu-sub-pri-02
+
+    - 기존 보안 그룹 선택: lab-edu-sg-web
+
+    - '고급 세부 정보' 확장 → IAM 인스턴스 프로파일: lab-edu-role-ec2
+
+    - '생성' 버튼 클릭
+
+### 3. Web Service 접속 테스트
+
+- EC2 접속 정보 확인: 인스턴스 메인 콘솔 화면 이동 → '인스턴스' 탭으로 이동 → *lab-edu-ec2-web* 선택 → 퍼블릭 IPv4 주소 복사
+
+- 웹 서비스 접속 테스트 (새로 생성한 Web 서버 Public IP로 브라우저에서 접속)
+<br><br>
+
+
+
+# AMI(Amazon Machine Image) 해외 리전 복제 및 EC2 생성
+
+### 1. AMI 생성
+
+- **서울 리전 → EC2 콘솔 메인 화면 → AMI 리소스 탭 → *lab-edu-ami-web-v1-{YYMMDD}* 선택 → '작업' → 'AMI 복사'**
+
+    ![alt text](./img/ami_05.png)
+
+- AMI 복제 생성 정보 입력
+
+    - 대상 리전: 미국 동부(버지니아 북부)
+
+    - 'AMI 사본의 EBS 스냅샷 암호화' 활성화
+
+    - KMS: EBS
+
+    - 'AMI 복사' 버튼 클릭
+
+        ![alt text](./img/ami_06.png)
+
+- **버지니아 리전 → EC2 콘솔 메인 화면 → AMI 리소스 탭 → *lab-edu-ami-web-v1-{YYMMDD}* 선택 → 'AMI'로 인스턴스 시작' 버튼 클릭**
+
+- 인스턴스 생성 정보 입력
+
+    - 이름: lab-edu-ec2-web-us
+
+    - 키 페어: '키 페어 없이 계속 진행' 선택
+
+    - VPC: lab-edu-vpc-us
+
+    - Subnet: lab-edu-sub-us-pub-01
+
+    - 기존 보안 그룹 선택: lab-edu-sg-web-us
+
+    - '고급 세부 정보' 확장 → IAM 인스턴스 프로파일: lab-edu-role-ec2
+
+    - '생성' 버튼 클릭
+
+### 2. Web Service 접속 테스트
+
+- EC2 접속 정보 확인: 인스턴스 메인 콘솔 화면 이동 → '인스턴스' 탭으로 이동 → *lab-edu-ec2-web-us* 선택 → 퍼블릭 IPv4 주소 복사
+
+- 웹 서비스 접속 테스트 (새로 생성한 Web 서버 Public IP로 브라우저에서 접속)
