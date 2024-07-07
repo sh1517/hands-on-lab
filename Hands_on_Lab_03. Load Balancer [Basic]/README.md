@@ -39,7 +39,7 @@
     
 ### 2. Load Balancer 생성
 
-- **EC2 메인 콘솔 화면 → 로드밸런서 탭 → '로드밸런서 생성' 버튼 클릭** → 'Application Load Balancer' 선택
+- **EC2 메인 콘솔 화면 → 로드밸런서 탭 → '로드밸런서 생성' 버튼 클릭 → 'Application Load Balancer' 선택**
 
 - 아래 **로드밸런서 자원 정보** 참고하여 정보 입력
 
