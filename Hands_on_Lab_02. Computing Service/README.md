@@ -277,6 +277,7 @@
     echo "images/" >> .git/info/sparse-checkout
     echo "scripts/" >> .git/info/sparse-checkout
     echo "support_files/" >> .git/info/sparse-checkout
+    echo "serverless_code/" >> .git/info/sparse-checkout
     ```
 
 - Remote 저장소에서 필요한 폴더만 다운로드
