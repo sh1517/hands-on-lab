@@ -9,8 +9,20 @@
 - **VPC 콘솔 메인 화면 → 피어링 연결 리소스 탭 → "lab-edu-peering-ap01-eu01" 선택**
 
 - **'작업' 버튼 클릭 → '피어링 연결 삭제' 버튼 클릭 → '삭제' 입력 → '삭제' 버튼 클릭**
-<br><br>
 
+### 2. Transit Gateway Subnet 생성
+
+- **VPC 메인 콘솔 화면 → Subnet 리소스 탭 → "Subnet 생성" 버튼 클릭**
+
+- 아래 서브넷 자원 명세서를 참고하여 생성 정보 입력
+
+    |                   |Transit Gateway Subnet 01|Transit Gateway Subnet 02|
+    |:---:|:---:|:---:|
+    |VPC_ID             |leb-edu-vpc-ap-01|leb-edu-vpc-ap-01|
+    |Subnet_Name        |lab-edu-sub-tgw-01|lab-edu-sub-tgw-02|
+    |Availability_Zone  |ap-northeast-2a|ap-northeast-2c|
+    |IPv4 CIDR          |10.0.255.224/28|10.0.255.240/28|
+<br><br>
 
 
 # 서울 리전 ↔ 서울 리전 Transit Gateway 생성
@@ -26,6 +38,7 @@
     - Amazon ASN: 64512
 
     'Transit Gateway 생성' 버튼 클릭
+
         ![alt text](./img/transit_gateway_ap_ap_01.png)
 
 ### 2. Transit Gateway Attach 생성 (1/2)
