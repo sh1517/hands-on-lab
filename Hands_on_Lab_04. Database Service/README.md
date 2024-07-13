@@ -31,61 +31,73 @@
 
     ![alt text](./img/db_subnet_group_01.png)
 
-- 아래 정보 참고하여 설정
+- DB 서브넷 그룹 생성 정보 입력
 
     - 이름: lab-edu-subgroup-aurora
 
     - VPC: lab-edu-vpc-ap-01
 
-    - 가용영역: ap-northeast-2a, ap-northeast-2c
+    - 가용영역: 
 
-    - 서브넷: lab-edu-sub-db-01, lab-edu-sub-db-02
+        - ap-northeast-2a
 
-        ![alt text](./img/db_subnet_group_02.png)
+        - ap-northeast-2c
+
+    - 서브넷: 
+
+        - lab-edu-sub-db-01
+
+        - lab-edu-sub-db-02
+
+    - '생성' 버튼 클릭
+
+        ![alt text](./img/rds_01.png)
 
 ### 4. RDS 생성
 
-- **RDS 메인 콘솔 화면 → 데이터베이스 탭 → '데이터베이스 생성' 버튼 클릭**
+- **RDS 메인 콘솔 화면 → '데이터 베이스' 리소스 탭 → '데이터 베이스 생성' 버튼 클릭**
 
-- 아래 **데이터베이스 자원 명세서** 정보 참고하여 설정
+- 데이터 베이스 생성 정보 입력
 
-    - 엔진유형: Aurora (PostgreSQL Compatible)
+    - 엔진 유형: Aurora (PostgreSQL Compatible)
 
-    - 사용 가능한 버전: Aurora PostgreSQL 15.3
+    - 사용 가능한 버전: Aurora PostgreSQL 15.4
+
+        ![alt text](./img/rds_02.png)
 
     - 템플릿: 개발/테스트
 
     - DB 클러스터 식별자: lab-edu-rds-aurora
 
-    - 자격증명 관리: 자체 관리
+    - 마스터 사용자 이름: postgres
 
-    - Master User Name: postgres
+    - '자체 관리' 라디오 버튼 선택
 
-    - Master User Password: qwer1234
+    - 마스터 암호: qwer1234
 
-        ![alt text](./img/db_aurora_01.png)
-        
-    - 인스턴스 구성: 버스터블 클래스(t클래스 포함) - db.t3.medium
+    - 마스터 암호 확인: qwer1234
 
-    - 다중 AZ 배포: 다른 AZ에 Aurora 복제본/리더 노드 생성 (확장된 가용성에 권장)
+        ![alt text](./img/rds_03.png)
+
+    - 인스턴스 구성: 버스터블 클래스(t 클래스 포함) → db.t3.medium
+
+    - 다중 AZ 배포: Aurora 복제본 생성하지 않음
 
     - VPC: lab-edu-vpc-ap-01
 
     - DB 서브넷 그룹: lab-edu-subgroup-aurora
 
-        ![alt text](./img/db_aurora_02.png)
-        
     - 퍼블릭 액세스: 아니오
 
-    - VPC 보안 그룹: lab-edu-sg-aurora
+        ![alt text](./img/rds_04.png)
+
+    - 보안그룹: lab-edu-sg-aurora
 
     - 데이터베이스 인증: 암호 인증
 
-    - 모니터링 Enhanced 모니터링 활성화 체크박스 해제
+    - 모니터링: Enhanced 모니터링 활성화 체크박스 해제
 
-    - 나머지 항목은 Default 값으로 설정하고 '생성' 버튼 클릭
-
-        ![alt text](./img/db_aurora_03.png)
+    - '생성' 버튼 클릭
 
 ### 5. PostgreSQL 접속 테스트
 
