@@ -120,12 +120,30 @@
 
     ```bash
     # Connect aurora
-    psql -U postgres -h {RDS_AURORA_ENDPOINT}   #앞에서 메모장에 저장한 RDS Aurora 엔드포인 정보 입력
-    Password for user postgres: {RDS_AURORA_PASSWORD}   #생성과정에 입력했던 패스워드 입력
+    psql -U postgres -h {RDS_AURORA_ENDPOINT}           # 앞에서 메모장에 저장한 RDS Aurora 엔드포인 정보 입력
+    Password for user postgres: {RDS_AURORA_PASSWORD}   # 생성과정에 입력했던 패스워드 입력
 
     psql (15.6, server 15.4)
     SSL connection (protocol: TLSv1.3, cipher: TLS_AES_256_GCM_SHA384, compression: off)
     Type "help" for help.
 
     postgres=>
+    ```
+
+### 6. PostgreSQL Database, User 생성 및 권한 할당
+
+- Cloud9 IDE 서버 접속 → SQL Query Sample 파일 열기 (support_files/sql_query/initial_settings_db.sql) → 내용 복사 → 붙여넣기
+
+    ```sql
+    create database trip_advisor;
+    create user "user" with password 'qwer1234';
+    grant all privileges on database trip_advisor to "user";
+    alter database trip_advisor owner to "user";
+    ```
+
+- 'user' 계정 활용 'trip_advisor' 접속 테스트
+
+    ```bash
+    psql –U user –d trip_advisor –h {RDS_AURORA_ENDPOINT}   # 앞에서 메모장에 저장한 RDS Aurora 엔드포인 정보 입력
+    Password for user user: {RDS_AURORA_PASSWORD}       # 생성과정에 입력했던 패스워드 입력
     ```
