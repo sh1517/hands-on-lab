@@ -1,6 +1,6 @@
 #!/bin/bash
-# Python 3.11 설치 스크립트
 
+# Python 3.11 설치 스크립트
 echo "#####################"
 echo "Python 3.11 설치 시작"
 echo "#####################"
@@ -41,20 +41,15 @@ sudo sed -i 's|#!/usr/bin/python3|#!/usr/bin/python3.9|g' /usr/bin/yum
 head -1 /usr/bin/dnf
 sudo dnf --version
 
-echo "##############"
-echo "Streamlit 설치"
-echo "##############"
+echo "################"
+echo "PIP Upgrade 설치"
+echo "################"
 python3 -m pip install --upgrade pip
-pip install streamlit 
-pip install streamlit-option-menu
-pip install boto3
-pip install psutil
 
 echo "################"
 echo "Stress Tool 설치"
 echo "################"
 sudo dnf install stress -y
-
 
 echo "##################"
 echo "Git & Code Install"
@@ -63,15 +58,18 @@ yum install git -y
 cd /root/
 git clone https://github.com/sh1517/streamlit-project.git
 
+echo "######################"
+echo "Python Package Install"
+echo "######################"
+cd streamlit-project
+pip install -r requirements.txt
+
 echo "##############"
 echo "Upgrade AWSCLI"
 echo "##############"
-cd streamlit-project
 sh scripts/upgrade_aws_cli_v2.sh
-
 
 echo "#################"
 echo "Application Start"
 echo "#################"
-cd streamlit-project
 streamlit run main.py --server.port 80
