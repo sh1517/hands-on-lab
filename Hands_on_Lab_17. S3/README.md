@@ -6,7 +6,7 @@
 
 - S3 버킷 생성 정보 입력
 
-    - 버킷 이름: www.*{st01~30}*.cj-cloud-wave.com
+    - 버킷 이름: s3.*{st01~30}*.cj-cloud-wave.com
 
     - '버킷 생성' 버튼 클릭
 
@@ -24,7 +24,7 @@
 
     ```bash
     cd ~/environment/serverless_code
-    aws s3 sync ./ s3://www.{st01~30}.cj-cloud-wave.com
+    aws s3 sync ./ s3://s3.{st01~30}.cj-cloud-wave.com
     ```
 
 ### 3. CloudFront 생성 및 연동
@@ -33,7 +33,7 @@
 
 - CloudFront 생성 정보 입력
 
-    - 원본 도메인: www.{st01~30}.cj-cloud-wave.com.s3.ap-northeast-2.amazonaws.com
+    - 원본 도메인: s3.{st01~30}.cj-cloud-wave.com.s3.ap-northeast-2.amazonaws.com
 
     - 원본 액세스: Legacy Access identities
 
@@ -41,17 +41,49 @@
 
         - 버킷 정책: 예, 버킷 정책 업데이트
 
+    ![alt text](./img/cf_01.png)
+
     - 뷰어 프로토콜 정책: Redirect HTTP to HTTPS
+
+        ![alt text](./img/cf_02.png)
 
     - WAF: 보안 보호 비활성화
 
-    - 대체 도메인 이름: www.{st01~30}.cj-cloud-wave.com
+    - 대체 도메인 이름: s3.{st01~30}.cj-cloud-wave.com
 
     - 사용자 정의 인증서: 인증서 요청
+
+        ![alt text](./img/cf_03.png)
+
+    - '다음' 버튼 클릭
+
+        ![alt text](./img/cf_04.png)
+
+    - 퍼블릭 인증서 도메인 이름 설정
+  
+        - 완전히 정규화된 도메인 이름: *.{st01~30}.cj-cloud-wave.com
+
+        - '이 인증서에 다른 이름 추가' 버튼 클릭
+
+        - 완전히 정규화된 도메인 이름: {st01~30}.cj-cloud-wave.com
+
+        - '생성' 버튼 클릭
+
+            ![alt text](./img/cf_05.png)
+
+    - 'Route 53에서 레코드 생성' 버튼 클릭 → '레코드 생성' 버튼 클릭
+
+        ![alt text](./img/cf_06.png)
+
+    - CloudFormation 생성 정보 입력 화면으로 복귀
+
+    - Custom SSL certificate '새로고침' 버튼 클릭 → '*.{st01~30}.cj-cloud-wave.com' 인증서 선택
 
     - 기본 루트 객체: index.html
 
     - '배포 생성' 버튼 클릭
+
+        ![alt text](./img/cf_07.png)
 
 ### 4. Route53 레코드 생성
 
@@ -59,15 +91,17 @@
 
 - 레코드 생성 정보 입력
 
-    - 레코드 이름: www.{st01~30}.cj-cloud-wave.com
+    - 레코드 이름:s3.{st01~30}.cj-cloud-wave.com
+
+    - '별칭' 버튼 활성화
 
     - 트래픽 라우팅 대상: CloudFront 배포에 대한 별칭
 
-    - *.cloudfront.net
+    - 's3.{st01~30}.cj-cloud-wave.com' 선택
 
     - '저장' 버튼 클릭
 
-### 5. 웹 호스팅 접속 테스트 (http://www.{st01~30}.cj-cloud-wave.com/ 접속)
+### 5. 웹 호스팅 접속 테스트 (http://s3.{st01~30}.cj-cloud-wave.com/ 접속)
 
 ![alt text](./img/s3_web_hosting_01.png)
 <br><br>
