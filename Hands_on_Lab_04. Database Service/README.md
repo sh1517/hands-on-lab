@@ -101,7 +101,7 @@
 
 ### 5. PostgreSQL 접속 테스트
 
-- Cloud9 IDE 서버 접속 → PostgreSQL 접속 Tool 다운로드 스크립트 실행
+- Cloud9 IDE 접속 → PostgreSQL 접속 Tool 다운로드 스크립트 실행
 
     ```bash
     cd ~/environment/cloud-wave-workspace/scripts/
@@ -132,7 +132,7 @@
 
 ### 6. PostgreSQL Database, User 생성 및 권한 할당
 
-- Cloud9 IDE 서버 접속 → SQL Query Sample 파일 열기 (support_files/sql_query/initial_settings_db.sql) → 내용 복사 → 붙여넣기
+- Cloud9 IDE 접속 → SQL Query Sample 파일 열기 (support_files/sql_query/initial_settings_db.sql) → 내용 복사 → 붙여넣기
 
     ```sql
     create database trip_advisor;
