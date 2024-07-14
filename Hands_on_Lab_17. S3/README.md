@@ -23,7 +23,7 @@
 - Cloud9 IDE Terminal 화면으로 이동 
 
     ```bash
-    cd ~/environment/serverless_code
+    cd ~/environment/cloud-wave-workspace/serverless_code/
     aws s3 sync ./ s3://s3.{st01~30}.cj-cloud-wave.com
     ```
 
