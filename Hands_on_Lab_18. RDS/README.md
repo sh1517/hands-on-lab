@@ -177,7 +177,7 @@
 
 ### 4. 웹 서비스 접속 테스트
 
-- 웹 서비스 접속 (*https://www.stxx.cj-cloud-wave.com*) → 로그인 → 'Travel_Attractions" 페이지 이동
+- 웹 서비스 접속 (*https://www.stxx.cj-cloud-wave.com*) → 로그인 → "Travel_Attractions" 페이지 이동
 
     ![alt text](./img/rds_02.png)
 
