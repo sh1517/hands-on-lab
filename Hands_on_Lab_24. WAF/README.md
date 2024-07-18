@@ -173,10 +173,11 @@
 
 ### 1. 해외 IP 차단 설정
 
+- **WAF 메인 콘솔 화면 → "Web ACLs" 탭 → *'lab-edu-waf' 선택***
+
 - Rules 탭 → 'lab-edu-rule-deny-myip' 선택 → 'Delete' 버튼 클릭
 
 - Rules 탭 → 'Add Rules' 버튼 클릭 → 'Add my own rules and rule groups' 선택
-
 
 - Rule 생성 정보 입력
 
@@ -250,9 +251,22 @@
 
     - '버킷 생성' 버튼 클릭
 
+### 2. WAF Logging 설정
 
+- **WAF 메인 콘솔 화면 → "Web ACLs" 탭 → *'lab-edu-waf' 선택***
 
+- Logging and metrics 탭 → 'Logging' 항목의 'Enable' 버튼 클릭
 
+    ![alt text](./img/logging_01.png)
 
+- Logging 설정 정보 입력
 
+    - Logging destination: S3 bucket
 
+    - Amazon S3 bucket: aws-waf-logs-bucket
+
+    - Redacted fields: HTTP method, Query string, URI path
+
+    - 'Save' 버튼 클릭
+
+        ![alt text](./img/logging_02.png)
