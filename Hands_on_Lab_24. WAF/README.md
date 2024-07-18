@@ -225,7 +225,7 @@
 
 - solarwinds 테스트 사이트 접속 (https://tools.pingdom.com/)
 
-    - URL 입력: *{st01~30}.cj-cloud-wave.com*
+    - URL 입력: *www.{st01~30}.cj-cloud-wave.com*
 
     - Test From: North America - USA
 
