@@ -221,11 +221,9 @@
         ```bash
         sudo su -
         ```
-
         ```bash
         cd streamlit-project/
         ```
-
         ```bash
         streamlit run main.py --server.port 80
         ```
