@@ -207,7 +207,7 @@
 
         ![alt text](./img/web_04.png)
     
-    - init script 실행 결과 확인
+    - '사용자 데이터' 적용 결과 확인
 
         ```bash
         ps -ef | grep streamlit
