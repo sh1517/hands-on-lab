@@ -107,6 +107,7 @@
 - 스크립트 실행 
 
     ```bash
+    sudo su -
     chmod +x install_python.sh
     ./install_python.sh
     ```
