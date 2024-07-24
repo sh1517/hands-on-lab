@@ -201,6 +201,12 @@
     systemctl start codedeploy-agent    # sudo service codedeploy-agent start
     ```
 
+- CodeDeploy Agent 삭제 명
+
+    ```bash
+    sudo yum erase codedeploy-agent
+    ```
+
 ### 2. CodeDeploy IAM Role 생성
 
 - **IAM 메인 콘솔 화면 → 역할 리소스 탭 → "역할 생성" 버튼 클릭**
