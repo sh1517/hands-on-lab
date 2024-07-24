@@ -152,13 +152,39 @@
 
 # 전이적 VPC Peering Network 통신 테스트
 
-### 1. 프랑크푸르트 리전 Network Server 접속
+### 1. Routing Table 수정
+
+- **서울 리전으로 이동 → VPC 콘솔 메인 화면 → 라우팅 테이블 탭 → "lab-edu-sub-2nd-pri-01" 선택 → '라우팅' 탭 → '라우팅 편집' 버튼 클릭**
+
+- 라우팅 테이블 경로 생성 정보 입력
+
+    - '라우팅 추가' 버튼 클릭
+
+    - 대상: 10.30.0.0/16
+
+    - 대상: 피어링 연결 (lab-edu-peering-ap01-ap02)
+
+    - '변경 사항 저장' 버튼 클릭
+
+- **프랑크푸르트 리전으로 이동 → VPC 콘솔 메인 화면 → 라우팅 테이블 탭 → "lab-edu-rtb-eu-pri-01" 선택 → '라우팅' 탭 → '라우팅 편집' 버튼 클릭**
+
+- 라우팅 테이블 경로 생성 정보 입력
+
+    - '라우팅 추가' 버튼 클릭
+
+    - 대상: 10.10.0.0/16
+
+    - 대상: 피어링 연결 (lab-edu-peering-ap01-eu01)
+
+    - '변경 사항 저장' 버튼 클릭
+
+### 2. 프랑크푸르트 리전 Network Server 접속
 
 - 프랑크푸르트 리전으로 이동 → EC2 콘솔 메인 화면 → 인스턴스 리소스 탭 → 'lab-edu-ec2-network-us' 선택 → '연결' 버튼 클릭
 
 - 'Session Manager' 탭으로 이동 → '연결' 버튼 클릭
 
-### 2. Network 통신 테스트
+### 3. Network 통신 테스트
 
 ```bash
 ping {2ND_VPC_NETWORK_SERVER_PRIVATE_IP}
